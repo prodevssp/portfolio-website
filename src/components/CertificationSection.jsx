@@ -1,24 +1,28 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaCircleChevronLeft, FaCircleChevronRight } from 'react-icons/fa6';
 import config from '@/lib/config';
 
 const CertificationSection = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
+	const [slidesPerView, setSlidesPerView] = useState(1);
 
-	// Responsive slide calculation
-	const getSlidesPerView = () => {
-		if (typeof window !== 'undefined') {
+	// Update slidesPerView based on window width
+	useEffect(() => {
+		const updateSlides = () => {
 			const width = window.innerWidth;
-			if (width >= 1024) return 4;
-			if (width >= 640) return 2;
-			return 1;
-		}
-		return 1;
-	};
+			if (width >= 1280) setSlidesPerView(4);
+			else if (width >= 1024) setSlidesPerView(3);
+			else if (width >= 768) setSlidesPerView(2);
+			else setSlidesPerView(1);
+		};
+
+		updateSlides();
+		window.addEventListener('resize', updateSlides);
+		return () => window.removeEventListener('resize', updateSlides);
+	}, []);
 
 	const handleNext = () => {
-		const slidesPerView = getSlidesPerView();
 		setCurrentSlide(prev =>
 			Math.min(
 				prev + slidesPerView,
@@ -28,7 +32,6 @@ const CertificationSection = () => {
 	};
 
 	const handlePrev = () => {
-		const slidesPerView = getSlidesPerView();
 		setCurrentSlide(prev => Math.max(prev - slidesPerView, 0));
 	};
 
@@ -45,28 +48,32 @@ const CertificationSection = () => {
 
 			<div className='mt-12 relative'>
 				<div className='flex items-center justify-center'>
+					{/* Previous Button */}
 					<button
 						onClick={handlePrev}
 						className='absolute left-4 z-10 bg-gray-700/50 rounded-full p-2'
 						disabled={currentSlide === 0}
+						aria-label='Previous Slide'
 					>
 						<FaCircleChevronLeft className='text-white' />
 					</button>
 
+					{/* Carousel */}
 					<div className='w-full overflow-hidden'>
 						<div
-							className='flex transition-transform duration-300 ease-in-out'
+							className='flex gap-4 transition-transform duration-300 ease-in-out'
 							style={{
 								transform: `translateX(-${
-									currentSlide *
-									(100 /
-										getSlidesPerView())
+									(currentSlide *
+										100) /
+									slidesPerView
 								}%)`,
 								width: `${
-									config
+									(config
 										.certificates
 										.length *
-									100
+										100) /
+									slidesPerView
 								}%`,
 							}}
 						>
@@ -79,7 +86,7 @@ const CertificationSection = () => {
 										key={
 											index
 										}
-										className='w-full sm:w-1/2 lg:w-1/4 px-4 flex-shrink-0'
+										className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0'
 									>
 										<div className='bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition transform duration-300'>
 											<img
@@ -121,6 +128,7 @@ const CertificationSection = () => {
 						</div>
 					</div>
 
+					{/* Next Button */}
 					<button
 						onClick={handleNext}
 						className='absolute right-4 z-10 bg-gray-700/50 rounded-full p-2'
@@ -128,8 +136,9 @@ const CertificationSection = () => {
 							currentSlide >=
 							config.certificates
 								.length -
-								getSlidesPerView()
+								slidesPerView
 						}
+						aria-label='Next Slide'
 					>
 						<FaCircleChevronRight className='text-white' />
 					</button>
