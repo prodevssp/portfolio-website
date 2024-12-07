@@ -21,6 +21,57 @@ const config = {
         advanced technologies.`,
 		cta: 'Hire Me',
 	},
+	certificates: [
+		{
+			title: 'Certificate of Achievement',
+			description:
+				'This certificate is awarded to Jane Doe for outstanding performance and dedication.',
+			image: '/assets/certificate.webp',
+			link: '/path-to-certificate1',
+		},
+		{
+			title: 'Certificate of Excellence',
+			description:
+				'Awarded to Jane Doe for demonstrating exceptional skills and contribution.',
+			image: '/assets/certificate.webp',
+			link: '/path-to-certificate2',
+		},
+		{
+			title: 'Certificate of Recognition',
+			description:
+				'Recognizing Jane Doe for her outstanding work and achievements.',
+			image: '/assets/certificate.webp',
+			link: '/path-to-certificate3',
+		},
+		{
+			title: 'Certificate of Appreciation',
+			description:
+				'Presented to Jane Doe for her remarkable efforts and dedication.',
+			image: '/assets/certificate.webp',
+			link: '/path-to-certificate4',
+		},
+		{
+			title: 'Certificate of Appreciation',
+			description:
+				'Presented to Jane Doe for her remarkable efforts and dedication.',
+			image: '/assets/certificate.webp',
+			link: '/path-to-certificate4',
+		},
+		{
+			title: 'Certificate of Appreciation',
+			description:
+				'Presented to Jane Doe for her remarkable efforts and dedication.',
+			image: '/assets/certificate.webp',
+			link: '/path-to-certificate4',
+		},
+		{
+			title: 'Certificate of Appreciation',
+			description:
+				'Presented to Jane Doe for her remarkable efforts and dedication.',
+			image: '/assets/certificate.webp',
+			link: '/path-to-certificate4',
+		},
+	],
 };
 
 export default config;

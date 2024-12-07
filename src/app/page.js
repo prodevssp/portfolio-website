@@ -1,12 +1,13 @@
 import AboutMe from '@/components/aboutMe';
+import CertificationSection from '@/components/CertificationSection';
 import HeroSection from '@/components/heroSection';
-import Image from 'next/image';
 
 export default function Home() {
 	return (
 		<main>
 			<HeroSection />
 			<AboutMe />
+			<CertificationSection />
 		</main>
 	);
 }
