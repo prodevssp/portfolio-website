@@ -11,6 +11,7 @@ const CertificationSection = () => {
 	useEffect(() => {
 		const updateSlides = () => {
 			const width = window.innerWidth;
+			console.log('width', width);
 			if (width >= 1280) setSlidesPerView(4);
 			else if (width >= 1024) setSlidesPerView(3);
 			else if (width >= 768) setSlidesPerView(2);
@@ -36,7 +37,7 @@ const CertificationSection = () => {
 	};
 
 	return (
-		<section className='py-16 bg-gray-900 text-white'>
+		<section className='py-16 pb-32 bg-gray-900 text-white'>
 			<div className='max-w-7xl mx-auto px-6 text-center'>
 				<h2 className='text-4xl font-bold text-orange-500'>
 					Certification
@@ -65,14 +66,15 @@ const CertificationSection = () => {
 							style={{
 								transform: `translateX(-${
 									(currentSlide *
-										100) /
+										95) /
 									slidesPerView
 								}%)`,
 								width: `${
 									(config
 										.certificates
-										.length *
-										100) /
+										.length -
+										1 *
+											80) /
 									slidesPerView
 								}%`,
 							}}
