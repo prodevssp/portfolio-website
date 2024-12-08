@@ -38,16 +38,16 @@ const AboutMe = () => {
 
 				{/* Right Content with Text */}
 				<div className='w-full lg:w-1/2 flex flex-col space-y-6'>
-					<h2 className='text-orange-500 text-lg font-semibold'>
+					<h2 className='text-orange-500 lg:text-lg xl:text-xl font-semibold'>
 						{config.about.heading}
 					</h2>
-					<h1 className='text-4xl lg:text-6xl font-bold'>
+					<h1 className='text-4xl lg:text-6xl xl:text-7xl font-bold'>
 						{config.about.subHeading}
 					</h1>
-					<p className='text-gray-400'>
+					<p className='text-gray-400 lg:text-lg xl:text-xl'>
 						{config.about.paragraph}
 					</p>
-					<button className='px-6 py-3 bg-orange-500 text-white rounded-lg text-lg font-semibold hover:bg-orange-600 transition'>
+					<button className='px-6 py-3 bg-orange-500 text-white rounded-lg lg:text-lg xl:text-xl font-semibold hover:bg-orange-600 transition'>
 						{config.about.cta}
 					</button>
 				</div>
