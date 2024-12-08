@@ -1,5 +1,7 @@
 import AboutMe from '@/components/aboutMe';
+import BlogSection from '@/components/BlogSection';
 import CertificationSection from '@/components/CertificationSection';
+import ContactSection from '@/components/ContactSection';
 import HeroSection from '@/components/heroSection';
 import PortfolioSection from '@/components/PortfolioSection';
 import ServicesSection from '@/components/ServicesSection';
@@ -14,6 +16,8 @@ export default function Home() {
 			<PortfolioSection />
 			<ServicesSection />
 			<TestimonialSection />
+			<BlogSection />
+			<ContactSection	/>
 		</main>
 	);
 }
