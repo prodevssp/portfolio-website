@@ -1,5 +1,6 @@
 import config from '@/lib/config';
 import React from 'react';
+import Button from './ui/Button';
 
 const AboutMe = () => {
 	return (
@@ -47,9 +48,8 @@ const AboutMe = () => {
 					<p className='text-black dark:text-gray-400 lg:text-lg xl:text-xl'>
 						{config.about.paragraph}
 					</p>
-					<button className='px-6 py-3 bg-orange-500 dark:text-white rounded-lg lg:text-lg xl:text-xl font-semibold hover:bg-orange-600 transition'>
-						{config.about.cta}
-					</button>
+
+					<Button>{config.about.cta}</Button>
 				</div>
 			</div>
 		</section>
