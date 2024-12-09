@@ -50,7 +50,7 @@ const TestimonialSection = () => {
 	}, [activeIndex]);
 
 	return (
-		<section className='relative py-16 bg-slate-50 text-center dark:bg-slate-900'>
+		<section className='relative py-16 bg-white text-center dark:bg-slate-900'>
 			<div className='max-w-4xl mx-auto'>
 				<h2 className='text-orange-500 text-lg font-semibold'>
 					Testimonials

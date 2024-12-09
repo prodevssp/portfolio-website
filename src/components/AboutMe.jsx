@@ -43,11 +43,11 @@ const AboutMe = () => {
 						{config.about.heading}
 					</h2>
 					<h1
-						className='text-4xl lg:text-6xl xl:text-7xl font-bold text-black dark:text-slate-50'
+						className='text-4xl lg:text-6xl xl:text-7xl font-bold text-slate-900 dark:text-slate-50'
 					>
 						{config.about.subHeading}
 					</h1>
-					<p className='text-black dark:text-gray-400 lg:text-lg xl:text-xl'>
+					<p className='text-slate-800 dark:text-gray-400 lg:text-lg xl:text-xl'>
 						{config.about.paragraph}
 					</p>
 

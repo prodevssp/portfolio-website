@@ -19,7 +19,7 @@ export default function HeroSection() {
 					<h2 className='lg:text-2xl xl:text-3xl text-primary-500 font-semibold'>
 						Hello, I&apos;m
 					</h2>
-					<h1 className='lg:text-6xl xl:text-7xl font-medium text-black'>
+					<h1 className='lg:text-6xl xl:text-7xl font-medium text-slate-900'>
 						{config.basicDetails.name}
 					</h1>
 					<p className='lg:text-xl xl:text-2xl text-gray-500'>
