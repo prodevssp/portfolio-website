@@ -51,7 +51,7 @@ const ServicesSection = () => {
 				{services.map((service, index) => (
 					<div
 						key={index}
-						className='bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300'
+						className='bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300'
 					>
 						<div className='flex items-center space-x-4'>
 							<div className='w-20 h-20 rounded-full flex items-center justify-center'>
@@ -66,7 +66,7 @@ const ServicesSection = () => {
 								/>
 							</div>
 							<div>
-								<h4 className='text-xl font-bold text-slate-900'>
+								<h4 className='text-xl font-bold text-slate-900 dark:text-slate-50'>
 									{
 										service.title
 									}
@@ -80,7 +80,7 @@ const ServicesSection = () => {
 								</p>
 							</div>
 						</div>
-						<p className='text-gray-500 mt-4 text-sm'>
+						<p className='text-gray-500 dark:text-slate-200 mt-4 text-sm'>
 							{service.description}
 						</p>
 					</div>
