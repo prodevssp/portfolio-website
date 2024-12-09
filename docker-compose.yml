@@ -1,0 +1,17 @@
+services:
+  soumya-portfolio_infyfix_nextjs:
+    image: soumya-portfolio.infyfix.com
+    container_name: soumya-portfolio-infyfix.com
+    working_dir: /app
+    ports:
+      - "3004:3000"
+    expose:
+      - "3000"
+    command: "npm start"
+    environment:
+      NODE_ENV: production
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
