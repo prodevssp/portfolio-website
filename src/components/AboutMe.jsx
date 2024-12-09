@@ -4,7 +4,7 @@ import Button from './ui/Button';
 
 const AboutMe = () => {
 	return (
-		<section className='h-screen text-white bg-white dark:bg-gray-900 flex items-center justify-center px-8'>
+		<section className='h-screen text-slate-50 bg-slate-50 dark:bg-gray-900 flex items-center justify-center px-8'>
 			<div className='flex flex-wrap lg:flex-nowrap items-center gap-12 w-full max-w-6xl'>
 				{/* Left Content with Image and Stats */}
 				<div className='relative w-full lg:w-1/2 flex items-center justify-center'>
@@ -42,7 +42,9 @@ const AboutMe = () => {
 					<h2 className='text-orange-500 lg:text-lg xl:text-xl font-semibold'>
 						{config.about.heading}
 					</h2>
-					<h1 className='text-4xl lg:text-6xl xl:text-7xl font-bold text-black dark:text-white'>
+					<h1
+						className='text-4xl lg:text-6xl xl:text-7xl font-bold text-black dark:text-slate-50'
+					>
 						{config.about.subHeading}
 					</h1>
 					<p className='text-black dark:text-gray-400 lg:text-lg xl:text-xl'>

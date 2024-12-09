@@ -37,7 +37,7 @@ const CertificationSection = () => {
 	};
 
 	return (
-		<section className='py-16 pb-32 dark:bg-gray-900 bg-white text-white'>
+		<section className='py-16 pb-32 dark:bg-gray-900 bg-slate-50 text-slate-50'>
 			<div className='max-w-7xl mx-auto px-6 text-center'>
 				<h2 className='text-4xl font-bold text-orange-500'>
 					Certification
@@ -56,17 +56,17 @@ const CertificationSection = () => {
 						disabled={currentSlide === 0}
 						aria-label='Previous Slide'
 					>
-						<FaCircleChevronLeft className='text-white' />
+						<FaCircleChevronLeft className='text-slate-50' />
 					</button>
 
 					{/* Carousel */}
-					<div className='w-full overflow-hidden'>
+					<div className='w-full'>
 						<div
-							className='flex gap-4 transition-transform duration-300 ease-in-out'
+							className='flex gap-4 transition-transform duration-300 ease-in-out  '
 							style={{
 								transform: `translateX(-${
 									(currentSlide *
-										95) /
+										100) /
 									slidesPerView
 								}%)`,
 								width: `${
@@ -74,7 +74,7 @@ const CertificationSection = () => {
 										.certificates
 										.length -
 										1 *
-											80) /
+											100) /
 									slidesPerView
 								}%`,
 							}}
@@ -90,7 +90,10 @@ const CertificationSection = () => {
 										}
 										className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0'
 									>
-										<div className='bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition transform duration-300'>
+										<div
+											className='dark:bg-gray-800   hover:scale-105bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300
+										'
+										>
 											<img
 												src={
 													certificate.image
@@ -101,7 +104,7 @@ const CertificationSection = () => {
 												className='h-56 object-cover w-full'
 											/>
 											<div className='p-4'>
-												<h3 className='text-xl font-bold text-white'>
+												<h3 className='text-xl font-bold text-slate-50'>
 													{
 														certificate.title
 													}
@@ -117,7 +120,7 @@ const CertificationSection = () => {
 													}
 													target='_blank'
 													rel='noopener noreferrer'
-													className='inline-block mt-4 px-4 py-2 text-sm font-semibold text-orange-500 border border-orange-500 rounded hover:bg-orange-500 hover:text-white transition'
+													className='inline-block mt-4 px-4 py-2 text-sm font-semibold text-orange-500 border border-orange-500 rounded hover:bg-orange-500 hover:text-slate-50 transition'
 												>
 													View
 													Certificate
@@ -142,7 +145,7 @@ const CertificationSection = () => {
 						}
 						aria-label='Next Slide'
 					>
-						<FaCircleChevronRight className='text-white' />
+						<FaCircleChevronRight className='text-slate-50' />
 					</button>
 				</div>
 			</div>

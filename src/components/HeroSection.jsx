@@ -8,7 +8,7 @@ import { IoMdMail } from 'react-icons/io';
 export default function HeroSection() {
 	return (
 		<section
-			className='h-screen flex items-center justify-center bg-no-repeat bg-cover bg-center'
+			className='h-screen flex items-center justify-center bg-no-repeat bg-cover bg-center '
 			style={{
 				backgroundImage:
 					"url('/assets/backgrounds/hero-bg.jpg')",
