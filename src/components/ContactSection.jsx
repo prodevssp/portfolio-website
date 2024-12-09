@@ -3,17 +3,17 @@ import Button from './ui/Button';
 
 const ContactSection = () => {
 	return (
-		<section className='py-16 bg-white'>
+		<section className='py-16 bg-white dark:bg-slate-900'>
 			<div className='max-w-7xl mx-auto px-6 lg:px-12'>
 				{/* Section Title */}
 				<div className='text-center'>
 					<h2 className='text-orange-500 text-lg font-semibold'>
 						Contact Me
 					</h2>
-					<h3 className='text-4xl font-bold mt-2'>
+					<h3 className='text-4xl font-bold mt-2 dark:text-slate-50'>
 						I Want To Hear From You
 					</h3>
-					<p className='text-gray-500 text-lg mt-4'>
+					<p className='text-gray-500 text-lg mt-4 dark:text-slate-50'>
 						Please fill out the form on this
 						section to contact with me. Or
 						call between 9:00 a.m. and 8:00
@@ -32,7 +32,7 @@ const ContactSection = () => {
 								</span>
 							</div>
 							<div>
-								<p className='text-xl font-bold'>
+								<p className='text-xl font-bold dark:text-slate-50'>
 									Address
 								</p>
 								<p className='text-gray-500'>
@@ -49,7 +49,7 @@ const ContactSection = () => {
 								</span>
 							</div>
 							<div>
-								<p className='text-xl font-bold'>
+								<p className='text-xl font-bold dark:text-slate-50'>
 									Email
 								</p>
 								<p className='text-gray-500'>
@@ -64,7 +64,7 @@ const ContactSection = () => {
 								</span>
 							</div>
 							<div>
-								<p className='text-xl font-bold'>
+								<p className='text-xl font-bold dark:text-slate-50'>
 									Phone
 								</p>
 								<p className='text-gray-500'>

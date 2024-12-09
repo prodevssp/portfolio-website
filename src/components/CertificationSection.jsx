@@ -91,7 +91,7 @@ const CertificationSection = () => {
 										className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0'
 									>
 										<div
-											className='dark:bg-gray-800   hover:scale-105bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300
+											className='dark:bg-gray-800   hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300
 										'
 										>
 											<img
@@ -104,7 +104,7 @@ const CertificationSection = () => {
 												className='h-56 object-cover w-full'
 											/>
 											<div className='p-4'>
-												<h3 className='text-xl font-bold text-slate-50'>
+												<h3 className='text-xl font-bold dark:text-slate-50 text-slate-800'>
 													{
 														certificate.title
 													}

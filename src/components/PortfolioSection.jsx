@@ -1,68 +1,72 @@
-"use client";
-import React, { useState } from "react";
-import Image from "next/image";
+'use client';
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 const PortfolioSection = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState(null);
+	const [activeFilter, setActiveFilter] = useState('All');
+	const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = [
-    "All",
-    "Youtube",
-    "Vimeo",
-    "Soundcloud",
-    "Popup",
-    "Detail",
-  ];
-  const projects = [
-    {
-      id: 1,
-      category: "Youtube",
-      image: "/assets/project.png",
-      video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example YouTube video
-      link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-    {
-      id: 2,
-      category: "Vimeo",
-      image: "/assets/project.png",
-      video: "https://player.vimeo.com/video/76979871", // Example Vimeo video
-      link: "https://vimeo.com/76979871",
-    },
-    {
-      id: 3,
-      category: "Soundcloud",
-      image: "/assets/project.png",
-      link: "https://soundcloud.com/",
-    },
-    {
-      id: 4,
-      category: "Popup",
-      image: "/assets/project.png",
-    },
-    {
-      id: 6,
-      category: "Youtube",
-      image: "/assets/project.png",
-      video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    },
-  ];
+	const categories = [
+		'All',
+		'Youtube',
+		'Vimeo',
+		'Soundcloud',
+		'Popup',
+		'Detail',
+	];
+	const projects = [
+		{
+			id: 1,
+			category: 'Youtube',
+			image: '/assets/project.png',
+			video: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Example YouTube video
+			link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+		},
+		{
+			id: 2,
+			category: 'Vimeo',
+			image: '/assets/project.png',
+			video: 'https://player.vimeo.com/video/76979871', // Example Vimeo video
+			link: 'https://vimeo.com/76979871',
+		},
+		{
+			id: 3,
+			category: 'Soundcloud',
+			image: '/assets/project.png',
+			link: 'https://soundcloud.com/',
+		},
+		{
+			id: 4,
+			category: 'Popup',
+			image: '/assets/project.png',
+		},
+		{
+			id: 6,
+			category: 'Youtube',
+			image: '/assets/project.png',
+			video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+		},
+	];
 
-  const filteredProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+	const filteredProjects =
+		activeFilter === 'All'
+			? projects
+			: projects.filter(
+					project =>
+						project.category ===
+						activeFilter
+			  );
 
-  const openModal = (project) => {
-    setSelectedProject(project);
-  };
+	const openModal = project => {
+		setSelectedProject(project);
+	};
 
-  const closeModal = () => {
-    setSelectedProject(null);
-  };
+	const closeModal = () => {
+		setSelectedProject(null);
+	};
 
-  return (
-		<section className='py-16 bg-white text-gray-900'>
+	return (
+		<section className='py-16 bg-white text-gray-900 dark:bg-slate-900 dark:text-slate-50'>
 			<div className='max-w-6xl mx-auto text-center px-4'>
 				<h2 className='text-orange-500 text-lg font-semibold'>
 					Portfolio
@@ -117,7 +121,7 @@ const PortfolioSection = () => {
 							height={500}
 							className='object-cover'
 						/>
-						<div className='absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+						<div className='absolute inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
 							<span className='text-slate-50 text-lg font-medium'>
 								View Details
 							</span>
@@ -128,7 +132,7 @@ const PortfolioSection = () => {
 
 			{/* Modal */}
 			{selectedProject && (
-				<div className='fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50'>
+				<div className='fixed inset-0 bg-slate-900 bg-opacity-70 flex items-center justify-center z-50'>
 					<div className='bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full relative'>
 						<button
 							onClick={closeModal}
@@ -171,7 +175,7 @@ const PortfolioSection = () => {
 				</div>
 			)}
 		</section>
-  );
+	);
 };
 
 export default PortfolioSection;
