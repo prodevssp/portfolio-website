@@ -37,7 +37,7 @@ const CertificationSection = () => {
 	};
 
 	return (
-		<section className='py-16 pb-32 bg-gray-900 text-white'>
+		<section className='py-16 pb-32 dark:bg-gray-900 bg-white text-white'>
 			<div className='max-w-7xl mx-auto px-6 text-center'>
 				<h2 className='text-4xl font-bold text-orange-500'>
 					Certification
