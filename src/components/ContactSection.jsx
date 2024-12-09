@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './ui/Button';
 
 const ContactSection = () => {
 	return (
@@ -104,12 +105,14 @@ const ContactSection = () => {
 								placeholder='Write your message here'
 								className='border border-gray-300 rounded-lg px-4 py-3 text-gray-700 w-full mt-6 focus:outline-none focus:ring-2 focus:ring-orange-500'
 							></textarea>
-							<button
-								type='submit'
-								className='mt-6 w-full py-3 text-white bg-orange-500 rounded-lg font-semibold hover:bg-orange-600 transition duration-300'
+
+							<Button
+								sx={
+									'w-full duration-300 mt-4'
+								}
 							>
 								Submit Now
-							</button>
+							</Button>
 						</form>
 					</div>
 				</div>
