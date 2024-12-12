@@ -5,6 +5,9 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// Assuming you have a Button component. If not, you can replace it with a regular button element.
+import Button from "./ui/Button";
+
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
@@ -71,11 +74,10 @@ const PortfolioSection = () => {
     },
   ];
 
-  // Use useMemo to optimize filtering performance
+  // Filter projects based on active category
   const filteredProjects = useMemo(() => {
     if (activeFilter === "All") return projects;
 
-    // Use case-insensitive comparison and trim whitespace
     return projects.filter(
       (project) =>
         project.category.trim().toLowerCase() ===
@@ -83,7 +85,7 @@ const PortfolioSection = () => {
     );
   }, [activeFilter, projects]);
 
-  // Automatically reinitialize slider when filtered projects change
+  // Reinitialize slider when filtered projects change
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(0);
@@ -98,7 +100,7 @@ const PortfolioSection = () => {
     setSelectedProject(null);
   };
 
-  // Slider settings with key to force re-render
+  // Slider settings with key to force re-render when the number of projects changes
   const settings = {
     key: filteredProjects.length,
     dots: true,
@@ -109,13 +111,13 @@ const PortfolioSection = () => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1024, // Large screens
         settings: {
           slidesToShow: Math.min(2, filteredProjects.length),
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 768, // Medium screens
         settings: {
           slidesToShow: 1,
         },
@@ -131,18 +133,19 @@ const PortfolioSection = () => {
   return (
     <section className="py-16 pb-32 dark:bg-[#2C2D33] bg-slate-50 flex justify-center">
       <div className="max-w-7xl w-full px-6">
+        {/* Section Header */}
         <div className="text-center">
           <h2 className="text-4xl font-bold text-orange-500">Portfolio</h2>
           <p className="text-2xl text-gray-400 mt-2">My Amazing Works</p>
         </div>
 
         {/* Filters */}
-        <div className="flex justify-center space-x-4 mt-8">
+        <div className="flex flex-wrap justify-center space-x-4 mt-8">
           {categories.map((category, index) => (
             <button
               key={index}
               onClick={() => setActiveFilter(category)}
-              className={`text-lg font-medium ${
+              className={`text-base sm:text-lg md:text-xl font-medium mb-2 md:mb-0 px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-orange-500 ${
                 activeFilter === category
                   ? "text-orange-500 underline"
                   : "text-gray-500 hover:text-orange-500"
@@ -229,7 +232,7 @@ const PortfolioSection = () => {
         {/* Modal */}
         {selectedProject && (
           <div className="fixed inset-0 bg-slate-900 bg-opacity-70 flex items-center justify-center z-50">
-            <div className="bg-white dark:bg-[#4B4F5C] rounded-lg shadow-lg p-6 max-w-3xl w-full relative">
+            <div className="bg-white dark:bg-[#4B4F5C] rounded-lg shadow-lg p-6 max-w-3xl w-full relative overflow-y-auto max-h-screen">
               <button
                 onClick={closeModal}
                 className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-slate-50"
