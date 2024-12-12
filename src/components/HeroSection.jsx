@@ -10,7 +10,7 @@ export default function HeroSection() {
     <section className="h-screen flex items-center justify-center bg-no-repeat bg-cover bg-center bg-[url('/assets/backgrounds/hero-bg.jpg')] dark:bg-[url('/assets/backgrounds/hero-bg-dark.jpg')]">
       <div className="max-w-6xl flex items-center justify-between w-full">
         <div className="flex flex-col items-start space-y-4">
-          <h2 className="lg:text-2xl xl:text-3xl text-primary-500 font-semibold">
+          <h2 className="lg:text-2xl xl:text-3xl text-orange-500 font-semibold">
             Hello, I&apos;m
           </h2>
           <h1 className="lg:text-6xl xl:text-7xl font-medium text-slate-900 dark:text-white">
