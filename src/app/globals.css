@@ -4,20 +4,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
-:root {
-  --primary-50: #fff3ed;
-  --primary-100: #ffe5d5;
-  --primary-200: #fdc7ab;
-  --primary-300: #fc9f75;
-  --primary-400: #f96d3e;
-  --primary-500: #f75023;
-  --primary-600: #e82e0e;
-  --primary-700: #c01f0e;
-  --primary-800: #991b13;
-  --primary-900: #7b1913;
-  --primary-950: #420908;
-}
-
 body {
   font-family: "Jost", sans-serif;
 }
@@ -37,7 +23,7 @@ body {
 }
 
 .slick-active > button:before {
-  color: var(--primary-500) !important;
+  color: #f87315 !important;
 }
 
 .slick-track {

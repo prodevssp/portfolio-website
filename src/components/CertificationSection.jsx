@@ -29,20 +29,21 @@ const CertificationSection = () => {
     ],
     appendDots: (dots) => (
       <div className="mt-8">
-        {/* styles are overwritten in globals.css   */}
+        {/* Styles are overwritten in globals.css */}
         <ul className="flex justify-center space-x-2">{dots}</ul>
       </div>
     ),
   };
 
   return (
-    <section className="py-16 pb-32  dark:bg-[#2C2D33] bg-slate-50 text-slate-50">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="py-16 pb-32 dark:bg-[#2C2D33] bg-slate-50">
+      <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-orange-500">Certification</h2>
         <p className="text-2xl text-gray-400 mt-2">My Amazing Works</p>
       </div>
 
-      <div className="mt-12 px-10">
+      {/* Added max-width and centered the slider container */}
+      <div className="mt-12 px-6 max-w-7xl mx-auto">
         <Slider {...settings}>
           {config.certificates.map((certificate, index) => (
             <div key={index} className="px-2 h-full mb-2">
