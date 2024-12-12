@@ -26,6 +26,8 @@ const PortfolioSection = () => {
       image: "/assets/project.png",
       video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      title: "YouTube Project",
+      description: "This is a YouTube-based project.",
     },
     {
       id: 2,
@@ -33,29 +35,39 @@ const PortfolioSection = () => {
       image: "/assets/project.png",
       video: "https://player.vimeo.com/video/76979871",
       link: "https://vimeo.com/76979871",
+      title: "Vimeo Project",
+      description: "This is a Vimeo-based project.",
     },
     {
       id: 3,
       category: "Soundcloud",
       image: "/assets/project.png",
       link: "https://soundcloud.com/",
+      title: "Soundcloud Project",
+      description: "This is a Soundcloud-based project.",
     },
     {
       id: 4,
       category: "Popup",
       image: "/assets/project.png",
+      title: "Popup Project",
+      description: "This is a popup-based project.",
     },
     {
       id: 5,
       category: "Detail",
       image: "/assets/project.png",
       link: "https://example.com/detail",
+      title: "Detail Project",
+      description: "This is a detail-based project.",
     },
     {
       id: 6,
       category: "Youtube",
       image: "/assets/project.png",
       video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      title: "Another YouTube Project",
+      description: "This is another YouTube-based project.",
     },
   ];
 
@@ -117,15 +129,11 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white text-gray-900 dark:bg-[#2C2D33] dark:text-slate-50 flex justify-center">
+    <section className="py-16 pb-32 dark:bg-[#2C2D33] bg-slate-50 flex justify-center">
       <div className="max-w-7xl w-full px-6">
         <div className="text-center">
-          <h2 className="text-orange-500 text-lg font-semibold">Portfolio</h2>
-          <h3 className="text-4xl font-bold mt-2">My Amazing Works</h3>
-          <p className="text-gray-500 text-lg mt-4">
-            Most common methods for designing websites that work well on desktop
-            is responsive and adaptive design.
-          </p>
+          <h2 className="text-4xl font-bold text-orange-500">Portfolio</h2>
+          <p className="text-2xl text-gray-400 mt-2">My Amazing Works</p>
         </div>
 
         {/* Filters */}
@@ -148,30 +156,71 @@ const PortfolioSection = () => {
         {/* Portfolio Slider */}
         <div className="mt-12">
           {filteredProjects.length > 0 ? (
-            <Slider ref={sliderRef} {...settings}>
-              {filteredProjects.map((project) => (
-                <div key={project.id} className="px-2">
-                  <div
-                    className="relative group overflow-hidden rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer dark:bg-[#4B4F5C] bg-slate-50 mx-auto max-w-[800px]"
-                    onClick={() => openModal(project)}
-                  >
-                    <Image
-                      src={project.image}
-                      alt={`Project ${project.id}`}
-                      width={500}
-                      height={500}
-                      className="object-cover w-full h-56"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-slate-50 text-lg font-medium">
-                        View Details
-                      </span>
+            filteredProjects.length === 1 ? (
+              <div className="flex justify-center">
+                <div className="w-full max-w-md px-2">
+                  {filteredProjects.map((project) => (
+                    <div key={project.id} className="h-full mb-2">
+                      <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300">
+                        <Image
+                          src={project.image}
+                          alt={`Project ${project.id}`}
+                          width={500}
+                          height={500}
+                          className="h-56 object-cover w-full"
+                          priority
+                        />
+                        <div className="p-4">
+                          <h3 className="text-xl font-bold dark:text-slate-50 text-slate-800">
+                            {project.title}
+                          </h3>
+                          <p className="text-gray-400 text-sm mt-2">
+                            {project.description}
+                          </p>
+                          <button
+                            onClick={() => openModal(project)}
+                            className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-orange-500 border border-orange-500 rounded hover:bg-orange-500 hover:text-slate-50 transition"
+                          >
+                            Know More
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Slider ref={sliderRef} {...settings}>
+                {filteredProjects.map((project) => (
+                  <div key={project.id} className="px-2 h-full mb-2">
+                    <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300">
+                      <Image
+                        src={project.image}
+                        alt={`Project ${project.id}`}
+                        width={500}
+                        height={500}
+                        className="h-56 object-cover w-full"
+                        priority
+                      />
+                      <div className="p-4">
+                        <h3 className="text-xl font-bold dark:text-slate-50 text-slate-800">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm mt-2">
+                          {project.description}
+                        </p>
+                        <button
+                          onClick={() => openModal(project)}
+                          className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-orange-500 border border-orange-500 rounded hover:bg-orange-500 hover:text-slate-50 transition"
+                        >
+                          Know More
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </Slider>
+                ))}
+              </Slider>
+            )
           ) : (
             <p className="text-center text-gray-500">No projects found</p>
           )}

@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Slider from "react-slick";
 
 const TestimonialSection = () => {
   const testimonials = [
@@ -26,24 +27,21 @@ const TestimonialSection = () => {
     },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: false,
+    appendDots: (dots) => (
+      <div>
+        <ul className="flex justify-center mt-6 space-x-2">{dots}</ul>
+      </div>
+    ),
   };
-
-  const handlePrev = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1,
-    );
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000); // Change slide every 5 seconds
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [activeIndex]);
 
   return (
     <section className="relative py-16 bg-white text-center dark:bg-[#2C2D33]">
@@ -57,62 +55,35 @@ const TestimonialSection = () => {
           is responsive and adaptive design.
         </p>
 
-        {/* Testimonial Content */}
+        {/* Testimonial Slider */}
         <div className="mt-12">
-          <div className="mx-auto max-w-3xl">
-            <div className="text-5xl text-orange-500">
-              <span>&ldquo;</span>
-            </div>
-            <p className="text-gray-700 dark:text-slate-50 text-xl mt-4 leading-relaxed">
-              {testimonials[activeIndex].text}
-            </p>
-            <div className="flex items-center justify-center mt-6">
-              <img
-                src={testimonials[activeIndex].avatar}
-                alt={testimonials[activeIndex].author}
-                className="w-12 h-12 rounded-full mr-4"
-              />
-              <div>
-                <p className="font-semibold text-gray-900 dark:text-slate-50">
-                  {testimonials[activeIndex].author}
+          <Slider {...settings}>
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="mx-auto max-w-3xl px-4">
+                <div className="text-5xl text-orange-500">
+                  <span>&ldquo;</span>
+                </div>
+                <p className="text-gray-700 dark:text-slate-50 text-xl mt-4 leading-relaxed">
+                  {testimonial.text}
                 </p>
-                <p className="text-gray-500 text-sm dark:text-slate-50">
-                  {testimonials[activeIndex].position}
-                </p>
+                <div className="flex items-center justify-center mt-6">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.author}
+                    className="w-12 h-12 rounded-full mr-4"
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-900 dark:text-slate-50">
+                      {testimonial.author}
+                    </p>
+                    <p className="text-gray-500 text-sm dark:text-slate-50">
+                      {testimonial.position}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex justify-center mt-6 space-x-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-3 h-3 rounded-full ${
-                activeIndex === index
-                  ? "bg-orange-500"
-                  : "bg-gray-300 hover:bg-orange-500"
-              }`}
-            ></button>
-          ))}
-        </div>
-
-        {/* Navigation Arrows */}
-        <div className="flex justify-between items-center max-w-4xl mx-auto mt-8">
-          <button
-            onClick={handlePrev}
-            className="text-gray-500 hover:text-orange-500"
-          >
-            Prev
-          </button>
-          <button
-            onClick={handleNext}
-            className="text-gray-500 hover:text-orange-500"
-          >
-            Next
-          </button>
+            ))}
+          </Slider>
         </div>
       </div>
     </section>
