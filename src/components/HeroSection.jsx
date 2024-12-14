@@ -31,7 +31,9 @@ export default function HeroSection() {
             {config.basicDetails.about}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center mt-6">
-            <Button>About me</Button>
+            <Button >
+              <a href="#contact">Get Consultation</a>
+            </Button>
             <div className="flex gap-3 mt-2 sm:mt-0">
               <a
                 href={config.socials.linkedin}
