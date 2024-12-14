@@ -65,8 +65,8 @@ const BlogSection = () => {
   return (
     <section className="py-16 bg-slate-50 dark:bg-[#2C2D33] md:px-10" id="blog">
       <div className="max-w-6xl mx-auto text-center px-4">
-        <h2 className="text-orange-500 text-lg font-semibold">From My Blog</h2>
-        <h3 className="text-4xl font-bold mt-2 dark:text-slate-50 text-slate-800">
+        <h2 className="text-orange-500 text-4xl font-semibold">From My Blog</h2>
+        <h3 className="text-xl font-bold mt-2 text-gray-400">
           Our Recent Updates, Blog, Tips, Tricks & More
         </h3>
       </div>

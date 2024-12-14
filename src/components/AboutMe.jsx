@@ -34,7 +34,7 @@ const AboutMe = () => {
 
         {/* Right Content with Text */}
         <div className="w-full lg:w-1/2 flex flex-col space-y-6 text-center lg:text-left">
-          <h2 className="text-orange-500 text-lg sm:text-xl font-semibold">
+          <h2 className="text-orange-500 lg:text-2xl sm:text-xl font-semibold">
             {config.about.heading}
           </h2>
           {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-slate-50">
