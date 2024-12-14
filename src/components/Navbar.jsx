@@ -2,10 +2,13 @@
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
+import { FiSun, FiMoon } from "react-icons/fi"; // Import theme toggle icons
+import { useTheme } from "next-themes";
 import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -40,8 +43,24 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          {/* Theme Toggle Icon */}
+          <button
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            className="text-gray-600 dark:text-gray-400 p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+            aria-label="Toggle Theme"
+          >
+            {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
+          </button>
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-4">
+          {/* Theme Toggle Icon */}
+          <button
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            className="text-gray-600 dark:text-gray-400 p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+            aria-label="Toggle Theme"
+          >
+            {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
+          </button>
           <button
             className="text-gray-400 hover:text-orange-500 focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
