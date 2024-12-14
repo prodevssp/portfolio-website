@@ -29,7 +29,7 @@ Over the years, I’ve also mentored hundreds of professionals, helping them ach
 goals and embrace growth confidently.
 For me, it’s all about combining innovation, collaboration, and a forward-thinking mindset to
 create meaningful change. Let’s connect and explore what’s possible together!`,
-    cta: "Hire Me",
+    cta: "Get consultation",
   },
   certificates: [
     {
@@ -54,33 +54,49 @@ create meaningful change. Let’s connect and explore what’s possible together
       image: "/assets/certificate.webp",
       link: "/path-to-certificate3",
     },
+  ],
+  achievements: [
     {
-      title: "Certificate of Appreciation",
+      title: "Best AI/ML Product Navigator of the Year",
       description:
-        "Presented to Jane Doe for her remarkable efforts and dedication.",
-      image: "/assets/certificate.webp",
-      link: "/path-to-certificate4",
+        "Recognized for excellence in AI/ML product navigation and implementation",
+      icon: "🏆",
     },
     {
-      title: "Certificate of Appreciation",
+      title: "Best CX Professional of the Year",
       description:
-        "Presented to Jane Doe for her remarkable efforts and dedication.",
-      image: "/assets/certificate.webp",
-      link: "/path-to-certificate4",
+        "Awarded for outstanding contributions to customer experience",
+      icon: "🌟",
     },
     {
-      title: "Certificate of Appreciation",
+      title: "Gold Award - DevOps Platform",
       description:
-        "Presented to Jane Doe for her remarkable efforts and dedication.",
-      image: "/assets/certificate.webp",
-      link: "/path-to-certificate4",
+        "Gold Award Winner for developing Centralised DevOps Platform",
+      icon: "🥇",
     },
     {
-      title: "Certificate of Appreciation",
+      title: "Gold Award - Process Automation",
       description:
-        "Presented to Jane Doe for her remarkable efforts and dedication.",
-      image: "/assets/certificate.webp",
-      link: "/path-to-certificate4",
+        "Gold Award Winner for automating user entitlements simplification, significantly reducing manual efforts and improving overall process efficiency",
+      icon: "⚡",
+    },
+    {
+      title: "Gold Award - Stakeholder Management",
+      description:
+        "Gold Award Winner for demonstrating exceptional stakeholder management skills",
+      icon: "🤝",
+    },
+    {
+      title: "Gold Award - Leadership Excellence",
+      description:
+        "Gold Award Winner for demonstrating outstanding leadership capabilities",
+      icon: "👑",
+    },
+    {
+      title: "Executive Recognition",
+      description:
+        "Pat on the back award from Executive Leader of Bank of America for resolving critical stability issues",
+      icon: "🎯",
     },
   ],
   projects: [
