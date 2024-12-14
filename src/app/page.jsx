@@ -3,7 +3,6 @@ import AchievementsSection from "@/components/AchievementsSection";
 import BlogSection from "@/components/BlogSection";
 import CertificationSection from "@/components/CertificationSection";
 import ContactSection from "@/components/ContactSection";
-import CustomCursor from "@/components/CustomCursor";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import PortfolioSection from "@/components/PortfolioSection";

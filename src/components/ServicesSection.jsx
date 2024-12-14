@@ -1,4 +1,6 @@
 import React from "react";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 const services = [
   {
@@ -73,12 +75,23 @@ const ServicesSection = () => {
             <p className="text-gray-500 dark:text-slate-200 mt-4 text-sm">
               {service.description}
             </p>
-            <a
-              href="#contact"
-              className="mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
-            >
-              Book a Call
-            </a>
+            <SignedIn>
+              <Link
+                href="/consult"
+                className="mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
+              >
+                Book a Call
+              </Link>
+            </SignedIn>
+            {/* Open login modal if user is not signed in  */}
+            <SignedOut>
+              <SignInButton
+                mode={"modal"}
+                className="mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
+              >
+                Book a Call
+              </SignInButton>
+            </SignedOut>
           </div>
         ))}
       </div>
