@@ -36,7 +36,7 @@ const BlogSection = () => {
   const settings = {
     dots: true,
     infinite: true,
-    arrows: false, // Set to true if you want navigation arrows
+    arrows: true, // Set to true if you want navigation arrows
     speed: 500,
     slidesToShow: 3, // Number of slides to show on large screens
     slidesToScroll: 1,

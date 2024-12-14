@@ -52,7 +52,7 @@ const PortfolioSection = () => {
     key: filteredProjects.length,
     dots: true,
     infinite: filteredProjects.length > 3,
-    arrows: false,
+    arrows: true,
     speed: 500,
     slidesToShow: Math.min(3, filteredProjects.length),
     slidesToScroll: 1,
@@ -132,7 +132,7 @@ const PortfolioSection = () => {
                           </p>
                           <button
                             onClick={() => openModal(project)}
-                            className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-orange-500 border border-orange-500 rounded hover:bg-orange-500 hover:text-slate-50 transition"
+                            className="mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white"
                           >
                             Know More
                           </button>
@@ -164,7 +164,9 @@ const PortfolioSection = () => {
                         </p>
                         <button
                           onClick={() => openModal(project)}
-                          className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-orange-500 border border-orange-500 rounded hover:bg-orange-500 hover:text-slate-50 transition"
+                          className="
+                          mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white
+                          "
                         >
                           Know More
                         </button>

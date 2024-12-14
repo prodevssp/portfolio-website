@@ -35,7 +35,7 @@ const TestimonialSection = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-    arrows: false,
+    arrows: true,
     appendDots: (dots) => (
       <div>
         <ul className="flex justify-center mt-6 space-x-2">{dots}</ul>
