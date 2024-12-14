@@ -1,77 +1,136 @@
 const config = {
-	basicDetails: {
-		name: 'Soumya Sourav',
-		role: 'Creative Designer',
-		location: 'New York',
-		about: `I'm a creative designer based in New York, and I'm very passionate and dedicated to my work.`,
-	},
-	socials: {
-		linkedin: 'https://www.linkedin.com/in/soumyasouravpatnaik/',
-		github: 'https://github.com/sspcodeflix',
-		mail: 'manager@soumyasourav.com',
-	},
-	about: {
-		heading: `I'm a Designer`,
-		subHeading: `I Can Design Anything You Want`,
-		paragraph: `I'm Soumya Sourav, a Full-Stack Product Innovation Leader and Career Coach, dedicated
-        to building impactful software solutions aligned with the latest market trends. Born
-        in 1991 in a small town in India, my passion for technology began early. At 14, I
-        convinced my parents to buy me my first computer. 😊 That pivotal moment ignited my
-        journey into coding, starting with LOGO and BASIC, and evolving into today’s most
-        advanced technologies.`,
-		cta: 'Hire Me',
-	},
-	certificates: [
-		{
-			title: 'Certificate of Achievement',
-			description:
-				'This certificate is awarded to Jane Doe for outstanding performance and dedication.',
-			image: '/assets/certificate.webp',
-			link: '/path-to-certificate1',
-		},
-		{
-			title: 'Certificate of Excellence',
-			description:
-				'Awarded to Jane Doe for demonstrating exceptional skills and contribution.',
-			image: '/assets/certificate.webp',
-			link: '/path-to-certificate2',
-		},
-		{
-			title: 'Certificate of Recognition',
-			description:
-				'Recognizing Jane Doe for her outstanding work and achievements.',
-			image: '/assets/certificate.webp',
-			link: '/path-to-certificate3',
-		},
-		{
-			title: 'Certificate of Appreciation',
-			description:
-				'Presented to Jane Doe for her remarkable efforts and dedication.',
-			image: '/assets/certificate.webp',
-			link: '/path-to-certificate4',
-		},
-		{
-			title: 'Certificate of Appreciation',
-			description:
-				'Presented to Jane Doe for her remarkable efforts and dedication.',
-			image: '/assets/certificate.webp',
-			link: '/path-to-certificate4',
-		},
-		{
-			title: 'Certificate of Appreciation',
-			description:
-				'Presented to Jane Doe for her remarkable efforts and dedication.',
-			image: '/assets/certificate.webp',
-			link: '/path-to-certificate4',
-		},
-		{
-			title: 'Certificate of Appreciation',
-			description:
-				'Presented to Jane Doe for her remarkable efforts and dedication.',
-			image: '/assets/certificate.webp',
-			link: '/path-to-certificate4',
-		},
-	],
+  basicDetails: {
+    name: "Soumya Sourav",
+    role: "Creative Designer",
+    location: "New York",
+    about: `I'm a creative designer based in New York, and I'm very passionate and dedicated to my work.`,
+  },
+  socials: {
+    linkedin: "https://www.linkedin.com/in/soumyasouravpatnaik/",
+    github: "https://github.com/sspcodeflix",
+    mail: "manager@soumyasourav.com",
+  },
+  about: {
+    heading: `Hey there!`,
+    // subHeading: `I Can Design Anything You Want`,
+    paragraph: `I’m a visionary technology leader with over a decade of experience in machine learning,
+artificial intelligence, and cloud computing. My journey spans the pharmaceutical and
+banking domains, where I’ve had the privilege of solving complex challenges with innovative
+AI-driven solutions. Currently, I’m an Assistant Vice President – Specialist, Machine
+Learning &amp; AI Engineer at DBS Bank, leading the way in designing and implementing
+transformative data and AI solutions that drive success and enhance customer experiences.
+I thrive on exploring creative ways to leverage AI to tackle real-world problems—whether
+it’s optimizing operations or delivering personalized, impactful experiences. My technical
+expertise covers Python and JavaScript development, AWS cloud architecture, ML
+engineering, ML-Ops, and Generative AI.
+When I’m not deep in the tech world, I love sharing my passion through speaking, training,
+and participating in panel discussions at tech conferences on topics like Cloud, Data, and AI.
+Over the years, I’ve also mentored hundreds of professionals, helping them achieve their
+goals and embrace growth confidently.
+For me, it’s all about combining innovation, collaboration, and a forward-thinking mindset to
+create meaningful change. Let’s connect and explore what’s possible together!`,
+    cta: "Hire Me",
+  },
+  certificates: [
+    {
+      title: "AWS Solution Architect",
+      //   description:
+      // "This certificate is awarded to Jane Doe for outstanding performance and dedication.",
+      image: "/assets/certificate.webp",
+      link: "/path-to-certificate1",
+    },
+    {
+      title: "AWS Certified Developer",
+      //   description:
+      // "Awarded to Jane Doe for demonstrating exceptional skills and contribution.",
+      image: "/assets/certificate.webp",
+      link: "/path-to-certificate2",
+    },
+    {
+      title:
+        "Advanced Certification In Software Engineering For Cloud, Blockchain & IoT.",
+      //   description:
+      // "Advanced Certification In Software Engineering For Cloud, Blockchain & IoT.",
+      image: "/assets/certificate.webp",
+      link: "/path-to-certificate3",
+    },
+    {
+      title: "Certificate of Appreciation",
+      description:
+        "Presented to Jane Doe for her remarkable efforts and dedication.",
+      image: "/assets/certificate.webp",
+      link: "/path-to-certificate4",
+    },
+    {
+      title: "Certificate of Appreciation",
+      description:
+        "Presented to Jane Doe for her remarkable efforts and dedication.",
+      image: "/assets/certificate.webp",
+      link: "/path-to-certificate4",
+    },
+    {
+      title: "Certificate of Appreciation",
+      description:
+        "Presented to Jane Doe for her remarkable efforts and dedication.",
+      image: "/assets/certificate.webp",
+      link: "/path-to-certificate4",
+    },
+    {
+      title: "Certificate of Appreciation",
+      description:
+        "Presented to Jane Doe for her remarkable efforts and dedication.",
+      image: "/assets/certificate.webp",
+      link: "/path-to-certificate4",
+    },
+  ],
+  projects: [
+    {
+      id: 1,
+      category: "Youtube",
+      image: "/assets/project.png",
+      video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      title: "Development of AI Powered Data Workbench ",
+      description:
+        "The development of an AI-powered data workbench enables organizations to streamline data ingestion, cleaning, and modelling  within a unified, intuitive interface. With intelligent automation and advanced analytics at its core, this platform empowers users to derive actionable insights more efficiently and at scale.",
+    },
+    {
+      id: 2,
+      category: "Vimeo",
+      image: "/assets/project.png",
+      video: "https://player.vimeo.com/video/76979871",
+      link: "https://vimeo.com/76979871",
+      title: "Xplorer",
+      description:
+        "A natural language chatbot product that can retrieve information directly from a database without requiring SQL queries. By interpreting user intent through AI-driven language understanding, it automatically fetches the relevant data and presents it in a clear, easily understandable format. Also it can be integrated with any existing communication tools like MS Teams and Slack.",
+    },
+    {
+      id: 3,
+      category: "Soundcloud",
+      image: "/assets/project.png",
+      link: "https://soundcloud.com/",
+      title: "MLflow++",
+      description:
+        "Enhancing the MLflow tool with robust security measures ensures that sensitive model data and pipeline configurations remain protected throughout the machine learning lifecycle. Additional add-ons, such as advanced governance controls and automated compliance checks, further streamline operations while maintaining a secure, trustworthy environment.",
+    },
+    {
+      id: 4,
+      category: "Popup",
+      image: "/assets/project.png",
+      title: "Architected a Retrieval-Augmented Generation (RAG)",
+      description:
+        "RAG pipeline that integrates a generative language model with a document retrieval system, enabling more accurate and context-aware responses. This approach ensures that the model’s outputs are continually grounded in up-to-date, relevant information sources rather than relying solely on static training data.",
+    },
+    {
+      id: 5,
+      category: "Detail",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "SuperBot",
+      description:
+        "It’s a product which is versatile conversational agent that can interact with a variety of resources: from technical documentation and code repositories to live websites allowing users to efficiently locate answers, troubleshoot issues, and streamline their workflow. By understanding context and intelligently retrieving the most relevant information, SuperBot makes complex research and problem-solving more accessible than ever.",
+    },
+  ],
 };
 
 export default config;

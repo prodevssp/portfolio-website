@@ -37,15 +37,15 @@ const AboutMe = () => {
           <h2 className="text-orange-500 text-lg sm:text-xl font-semibold">
             {config.about.heading}
           </h2>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-slate-50">
+          {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-slate-50">
             {config.about.subHeading}
-          </h1>
+          </h1> */}
           <p className="text-base sm:text-lg md:text-xl text-slate-800 dark:text-gray-400">
             {config.about.paragraph}
           </p>
 
           <Button className="self-center lg:self-start">
-            {config.about.cta}
+            <a href="#contact">{config.about.cta}</a>
           </Button>
         </div>
       </div>

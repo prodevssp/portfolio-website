@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,12 @@ const Navbar = () => {
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <a href="#home" className="text-white font-bold text-xl">
-            Soumya
+            <Image
+              src="/assets/soumyaSourav_logo.webp"
+              alt="logo"
+              width={200}
+              height={200}
+            />
           </a>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
