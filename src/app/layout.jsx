@@ -4,6 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { ThemeProvider } from "next-themes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const JostFont = Jost({
   subsets: ["latin"],
@@ -22,6 +24,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${JostFont.className} antialiased from-white via-[#f7f5f7] to-[#e4ddee] bg-gradient-to-br`}
         >
+          <ToastContainer position="top-right" />
           <ThemeProvider attribute={"class"}>{children}</ThemeProvider>
         </body>
       </html>
