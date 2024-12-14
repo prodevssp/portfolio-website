@@ -50,16 +50,16 @@ const TestimonialSection = () => {
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-orange-500 text-lg font-semibold">Testimonials</h2>
-        <h3 className="text-4xl font-bold mt-2 dark:text-slate-50">
+        <h3 className="text-4xl font-bold  mt-2 dark:text-gray-400">
           What My Clients Say
         </h3>
-        <p className="text-gray-500 text-lg mt-4 dark:text-slate-50">
+        {/* <p className="text-gray-500 text-lg mt-4 dark:text-slate-50">
           Most common methods for designing websites that work well on desktop
           is responsive and adaptive design.
-        </p>
+        </p> */}
 
         {/* Testimonial Slider */}
-        <div className="mt-12">
+        <div className="mt-8">
           <Slider {...settings}>
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="mx-auto max-w-3xl px-4">

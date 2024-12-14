@@ -10,11 +10,11 @@ const ContactSection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Title */}
         <div className="text-center">
-          <h2 className="text-orange-500 text-lg font-semibold">Contact Me</h2>
-          <h3 className="text-4xl font-bold mt-2 dark:text-slate-50">
+          <h2 className="text-orange-500 text-4xl font-semibold">Contact Me</h2>
+          <h3 className="text-xl font-bold mt-2 text-gray-400">
             I Want To Hear From You
           </h3>
-          <p className="text-gray-500 text-lg mt-4 dark:text-slate-300">
+          <p className="text-gray-500 text-lg mt-4 dark:text-slate-50">
             Please fill out the form in this section to contact me. Or call
             between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday.
           </p>
@@ -46,7 +46,7 @@ const ContactSection = () => {
               <div>
                 <p className="text-xl font-bold dark:text-slate-50">Email</p>
                 <p className="text-gray-500 dark:text-slate-300">
-                  hello@dizme.com
+                  hey@ayushchugh.com
                 </p>
               </div>
             </div>

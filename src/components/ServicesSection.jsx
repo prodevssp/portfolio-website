@@ -38,14 +38,16 @@ const ServicesSection = () => {
       id="service"
     >
       <div className="max-w-6xl mx-auto text-center px-4">
-        <h2 className="text-orange-500 text-lg font-semibold">Services</h2>
-        <h3 className="text-4xl font-bold mt-2">What I Do for Clients</h3>
-        <p className="text-gray-500 text-lg mt-4">
+        <h2 className="text-orange-500 text-4xl font-semibold">Services</h2>
+        <h3 className="text-2xl text-gray-400 font-bold mt-2">
+          What I Do for Clients
+        </h3>
+        {/* <p className="text-gray-500 text-lg mt-2">
           Most common methods for designing websites that work well on desktop
           is responsive and adaptive design.
-        </p>
+        </p> */}
       </div>
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         {services.map((service, index) => (
           <div
             key={index}
