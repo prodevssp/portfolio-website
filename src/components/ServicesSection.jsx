@@ -9,7 +9,7 @@ const services = [
     icon: "/assets/avatar.png", // Replace with your actual icon path
   },
   {
-    title: "Graphic Design",
+    title: "Graphic Design", 
     price: "$199",
     description:
       "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
@@ -17,7 +17,7 @@ const services = [
   },
   {
     title: "UI/UX Design",
-    price: "$299",
+    price: "$299", 
     description:
       "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
     icon: "/assets/avatar.png", // Replace with your actual icon path
@@ -73,6 +73,15 @@ const ServicesSection = () => {
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="mt-16 text-center">
+        <a
+          href="#contact"
+          className="inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-lg hover:shadow-xl"
+        >
+          Get Started Today
+        </a>
       </div>
     </section>
   );
