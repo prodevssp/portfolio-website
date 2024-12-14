@@ -66,34 +66,34 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gray-50 dark:bg-[#4B4F5C] rounded-lg p-8 shadow-md transition-colors duration-300">
+          <div className="bg-gray-800 dark:bg-white rounded-lg p-8 shadow-md transition-colors duration-300">
             <form>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#3B3F4C] rounded-lg px-4 py-3 text-gray-700 dark:text-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="border border-gray-300 dark:border-gray-600 bg-gray-900 dark:bg-gray-50 rounded-lg px-4 py-3 text-gray-50 dark:text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
                 />
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#3B3F4C] rounded-lg px-4 py-3 text-gray-700 dark:text-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="border border-gray-300 dark:border-gray-600 bg-gray-900 dark:bg-gray-50 rounded-lg px-4 py-3 text-gray-50 dark:text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
                 />
                 <input
                   type="text"
                   placeholder="Your Phone"
-                  className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#3B3F4C] rounded-lg px-4 py-3 text-gray-700 dark:text-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="border border-gray-300 dark:border-gray-600 bg-gray-900 dark:bg-gray-50 rounded-lg px-4 py-3 text-gray-50 dark:text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
                 />
                 <input
                   type="text"
                   placeholder="Subject"
-                  className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#3B3F4C] rounded-lg px-4 py-3 text-gray-700 dark:text-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="border border-gray-300 dark:border-gray-600 bg-gray-900 dark:bg-gray-50 rounded-lg px-4 py-3 text-gray-50 dark:text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
                 />
               </div>
               <textarea
                 rows="4"
                 placeholder="Write your message here"
-                className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#3B3F4C] rounded-lg px-4 py-3 text-gray-700 dark:text-gray-300 w-full mt-6 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
+                className="border border-gray-300 dark:border-gray-600 bg-gray-900 dark:bg-gray-50 rounded-lg px-4 py-3 text-gray-50 dark:text-gray-700 w-full mt-6 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 placeholder-gray-400 dark:placeholder-gray-500"
               ></textarea>
 
               <Button sx={"w-full duration-300 mt-4"}>Submit Now</Button>
