@@ -18,7 +18,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-gray-700 py-4 md:py-8 px-10 lg:px-20 fixed w-full z-50">
+    <nav className="bg-white dark:bg-gray-800 py-4 md:py-8 px-10 lg:px-20 fixed w-full z-50">
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <a href="#home" className="text-white font-bold text-xl">
@@ -35,17 +35,11 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+              className="text-black dark:text-gray-400 hover:text-orange-500 transition-colors duration-300"
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="/download-cv" // Assuming this is a separate page or file
-            className="border-orange-500 border transition-all text-white px-4 py-2 rounded-md hover:bg-orange-600 ml-5"
-          >
-            Download CV
-          </a>
         </div>
         <div className="md:hidden">
           <button
@@ -70,13 +64,6 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="/download-cv"
-              className="border-orange-500 border text-white px-4 py-2 rounded-md hover:bg-orange-600 w-fit transition-all"
-              onClick={() => setIsOpen(false)}
-            >
-              Download CV
-            </a>
           </div>
         </div>
       )}
