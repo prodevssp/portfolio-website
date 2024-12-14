@@ -5,8 +5,7 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Assuming you have a Button component. If not, you can replace it with a regular button element.
-import Button from "./ui/Button";
+import config from "../lib/config";
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -22,68 +21,16 @@ const PortfolioSection = () => {
     "Detail",
   ];
 
-  const projects = [
-    {
-      id: 1,
-      category: "Youtube",
-      image: "/assets/project.png",
-      video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      title: "YouTube Project",
-      description: "This is a YouTube-based project.",
-    },
-    {
-      id: 2,
-      category: "Vimeo",
-      image: "/assets/project.png",
-      video: "https://player.vimeo.com/video/76979871",
-      link: "https://vimeo.com/76979871",
-      title: "Vimeo Project",
-      description: "This is a Vimeo-based project.",
-    },
-    {
-      id: 3,
-      category: "Soundcloud",
-      image: "/assets/project.png",
-      link: "https://soundcloud.com/",
-      title: "Soundcloud Project",
-      description: "This is a Soundcloud-based project.",
-    },
-    {
-      id: 4,
-      category: "Popup",
-      image: "/assets/project.png",
-      title: "Popup Project",
-      description: "This is a popup-based project.",
-    },
-    {
-      id: 5,
-      category: "Detail",
-      image: "/assets/project.png",
-      link: "https://example.com/detail",
-      title: "Detail Project",
-      description: "This is a detail-based project.",
-    },
-    {
-      id: 6,
-      category: "Youtube",
-      image: "/assets/project.png",
-      video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      title: "Another YouTube Project",
-      description: "This is another YouTube-based project.",
-    },
-  ];
-
   // Filter projects based on active category
   const filteredProjects = useMemo(() => {
-    if (activeFilter === "All") return projects;
+    if (activeFilter === "All") return config.projects;
 
-    return projects.filter(
+    return config.projects.filter(
       (project) =>
         project.category.trim().toLowerCase() ===
         activeFilter.trim().toLowerCase()
     );
-  }, [activeFilter, projects]);
+  }, [activeFilter, config.projects]);
 
   // Reinitialize slider when filtered projects change
   useEffect(() => {
