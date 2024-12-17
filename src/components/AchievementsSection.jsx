@@ -42,9 +42,11 @@ const AchievementsSection = () => {
       id="achievements"
     >
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-semibold text-orange-500">Achievements</h2>
+        <h2 className="text-4xl font-semibold text-orange-500">
+          {config.achievementsHeading.title}
+        </h2>
         <p className="text-xl text-gray-400 font-bold mt-2">
-          Recognition & Awards
+          {config.achievementsHeading.description}
         </p>
       </div>
 
