@@ -11,14 +11,6 @@ export async function POST(request) {
         { status: 400 },
       );
     }
-    console.log(
-      process.env.SMTP_HOST,
-      process.env.SMTP_PORT,
-      process.env.SMTP_SECURE,
-      process.env.SMTP_USER,
-      process.env.SMTP_PASS,
-      process.env.ADMIN_EMAIL,
-    );
     // Configure the transporter with custom SMTP settings
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST, // Your SMTP host
