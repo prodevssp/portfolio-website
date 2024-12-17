@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Button from "./ui/Button";
 import { toast } from "react-toastify";
+import config from "@/lib/config";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -59,13 +60,14 @@ const ContactSection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Title */}
         <div className="text-center">
-          <h2 className="text-orange-500 text-4xl font-semibold">Contact Me</h2>
+          <h2 className="text-orange-500 text-4xl font-semibold">
+            {config.contact.title}
+          </h2>
           <h3 className="text-xl font-bold mt-2 text-gray-400">
-            I Want To Hear From You
+            {config.contact.description}
           </h3>
           <p className="text-gray-500 text-lg mt-4 dark:text-slate-50">
-            Please fill out the form in this section to contact me. Or call
-            between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday.
+            {config.contact.about}
           </p>
         </div>
 
@@ -82,7 +84,7 @@ const ContactSection = () => {
               <div>
                 <p className="text-xl font-bold dark:text-slate-50">Address</p>
                 <p className="text-gray-500 dark:text-slate-300">
-                  20, Somewhere in the World
+                  {config.contact.address}
                 </p>
               </div>
             </div>
@@ -95,7 +97,7 @@ const ContactSection = () => {
               <div>
                 <p className="text-xl font-bold dark:text-slate-50">Email</p>
                 <p className="text-gray-500 dark:text-slate-300">
-                  hey@ayushchugh.com
+                  {config.contact.email}
                 </p>
               </div>
             </div>
@@ -108,7 +110,7 @@ const ContactSection = () => {
               <div>
                 <p className="text-xl font-bold dark:text-slate-50">Phone</p>
                 <p className="text-gray-500 dark:text-slate-300">
-                  +123 456 7890
+                  {config.contact.phone}
                 </p>
               </div>
             </div>

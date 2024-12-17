@@ -41,8 +41,12 @@ const CertificationSection = () => {
       id="certificate"
     >
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-orange-500">Certification</h2>
-        <p className="text-2xl text-gray-400 mt-2">My Amazing Works</p>
+        <h2 className="text-4xl font-bold text-orange-500">
+          {config.certificationsHeading.title}
+        </h2>
+        <p className="text-2xl text-gray-400 mt-2">
+          {config.certificationsHeading.description}
+        </p>
       </div>
 
       {/* Added max-width and centered the slider container */}
@@ -71,7 +75,7 @@ const CertificationSection = () => {
                     mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white
                     "
                   >
-                    View Certificate
+                    {config.certificationsHeading.viewCertificate}
                   </a>
                 </div>
               </div>
