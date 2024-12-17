@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import {
   signInWithPopup,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  sendSignInLinkToEmail,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
   onAuthStateChanged,
 } from "firebase/auth";
 import Link from "next/link";
@@ -40,18 +41,30 @@ const services = [
   },
 ];
 
-const AuthModal = ({ isOpen, onClose, onSubmit, mode, switchMode }) => {
+const AuthModal = ({ isOpen, onClose, onEmailSignIn, mode, switchMode }) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      await onSubmit(email, password);
-      onClose();
+      // Configuration for email link
+      const actionCodeSettings = {
+        url: typeof window !== "undefined" ? window.location.origin : "",
+        handleCodeInApp: true,
+      };
+
+      // Send sign-in link to email
+      await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+
+      // Save email to local storage for verification
+      window.localStorage.setItem("emailForSignIn", email);
+
+      // Show sent confirmation
+      setEmailSent(true);
     } catch (err) {
       setError(err.message);
     }
@@ -66,6 +79,33 @@ const AuthModal = ({ isOpen, onClose, onSubmit, mode, switchMode }) => {
     }
   };
 
+  useEffect(() => {
+    // Check for email link sign-in on component mount
+    if (
+      typeof window !== "undefined" &&
+      isSignInWithEmailLink(auth, window.location.href)
+    ) {
+      // Retrieve the email from local storage
+      let email = window.localStorage.getItem("emailForSignIn");
+
+      if (!email) {
+        // Prompt user to provide email if not in local storage
+        email = window.prompt("Please provide your email for confirmation");
+      }
+
+      // Complete sign-in
+      signInWithEmailLink(auth, email, window.location.href)
+        .then(() => {
+          // Clear the email from local storage
+          window.localStorage.removeItem("emailForSignIn");
+          onClose();
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
+  }, []);
+
   if (!isOpen) return null;
 
   return (
@@ -75,41 +115,43 @@ const AuthModal = ({ isOpen, onClose, onSubmit, mode, switchMode }) => {
           {mode === "login" ? "Login" : "Sign Up"}
         </h2>
         {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
-        <form onSubmit={handleEmailSubmit}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border rounded-md dark:bg-[#4b4f5c] dark:text-white"
-              required
-            />
+
+        {emailSent ? (
+          <div className="text-center">
+            <p className="text-green-600 mb-4">
+              Sign-in link sent to your email. Check your inbox!
+            </p>
+            <button
+              onClick={() => setEmailSent(false)}
+              className="text-orange-500 hover:underline"
+            >
+              Send again
+            </button>
           </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border rounded-md dark:bg-[#4b4f5c] dark:text-white"
-              required
-              minLength="6"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600 transition-colors mb-4"
-          >
-            {mode === "login" ? "Log In" : "Sign Up"}
-          </button>
-        </form>
+        ) : (
+          <form onSubmit={handleEmailSubmit}>
+            <div className="mb-6">
+              <label htmlFor="email" className="block mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-3 py-2 border rounded-md dark:bg-[#4b4f5c] dark:text-white"
+                required
+                placeholder="Enter your email"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600 transition-colors mb-4"
+            >
+              {mode === "login" ? "Send Login Link" : "Send Sign Up Link"}
+            </button>
+          </form>
+        )}
 
         {/* Google Sign-In */}
         <div className="relative">
@@ -188,15 +230,7 @@ const ServicesSection = () => {
 
     // Cleanup subscription on unmount
     return () => unsubscribe();
-  }, [auth]);
-
-  const handleEmailSignIn = async (email, password) => {
-    return await signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const handleEmailSignUp = async (email, password) => {
-    return await createUserWithEmailAndPassword(auth, email, password);
-  };
+  }, []);
 
   const switchAuthMode = () => {
     setAuthMode((mode) => (mode === "login" ? "signup" : "login"));
@@ -266,7 +300,6 @@ const ServicesSection = () => {
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
-        onSubmit={authMode === "login" ? handleEmailSignIn : handleEmailSignUp}
         mode={authMode}
         switchMode={switchAuthMode}
       />
