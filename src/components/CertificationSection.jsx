@@ -49,7 +49,7 @@ const CertificationSection = () => {
         </p>
       </div>
 
-      {/* Added max-width and centered the slider container */}
+      
       <div className="mt-12 px-6 max-w-7xl mx-auto">
         <Slider {...settings}>
           {config.certificates.map((certificate, index) => (
@@ -78,7 +78,7 @@ const CertificationSection = () => {
                     href={certificate.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white"
+                    className="mt-auto mb-4 block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white"
                   >
                     {config.certificationsHeading.viewCertificate}
                   </a>
