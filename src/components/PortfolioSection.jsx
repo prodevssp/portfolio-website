@@ -12,8 +12,6 @@ const PortfolioSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const sliderRef = useRef(null);
 
-  
-
   // Filter projects based on active category
   const filteredProjects = useMemo(() => {
     if (activeFilter === "All") return config.projects;
@@ -139,16 +137,19 @@ const PortfolioSection = () => {
               <Slider ref={sliderRef} {...settings}>
                 {filteredProjects.map((project) => (
                   <div key={project.id} className="px-2 h-full mb-2">
-                    <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300">
-                      <Image
-                        src={project.image}
-                        alt={`Project ${project.id}`}
-                        width={500}
-                        height={500}
-                        className="h-56 object-cover w-full"
-                        priority
-                      />
-                      <div className="p-4">
+                    <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300 flex flex-col">
+                      <div className="h-56 w-full">
+                        <Image
+                          src={project.image}
+                          alt={`Project ${project.id}`}
+                          width={500}
+                          height={500}
+                          className="h-full object-cover w-full"
+                          priority
+                        />
+                      </div>
+
+                      <div className="p-4 flex flex-1 flex-col justify-between">
                         <h3 className="text-xl font-bold dark:text-slate-50 text-slate-800">
                           {project.title}
                         </h3>
@@ -158,7 +159,7 @@ const PortfolioSection = () => {
                         <button
                           onClick={() => openModal(project)}
                           className="
-                          mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white
+                          mt-6 mb-4 block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white
                           "
                         >
                           Know More
