@@ -81,8 +81,8 @@ const BlogSection = () => {
               return 1;
             })
             .map((blog) => (
-              <div key={blog.slug} className="px-2">
-                <div className="relative dark:bg-[#4b4f5c] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300">
+              <div key={blog.slug} className="px-2 h-full">
+                <div className="relative h-full dark:bg-[#4b4f5c] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300">
                   <img
                     src={
                       blog.metadata.coverImage ||
