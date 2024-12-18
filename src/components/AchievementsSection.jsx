@@ -54,16 +54,16 @@ const AchievementsSection = () => {
         <Slider {...settings}>
           {config.achievements.map((achievement, index) => (
             <div key={index} className="px-2 h-full mb-2">
-              <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 p-6">
-                <div className="flex flex-col items-center justify-center h-full">
-                  <span
-                    className="text-4xl mb-4"
-                    role="img"
-                    aria-label="achievement icon"
-                  >
-                    {achievement.icon}
-                  </span>
-                  <h3 className="text-xl font-bold dark:text-slate-50 text-slate-800 text-center mb-4">
+              <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 p-4">
+                <div className="flex flex-col items-center justify-center h-full flex flex-col">
+                  <div className="h-56 w-full">
+                    <img
+                      src={achievement.image}
+                      alt={achievement.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold dark:text-slate-50 text-slate-800 text-center mb-4 mt-6">
                     {achievement.title}
                   </h3>
                   <p className="text-gray-400 text-base text-center">

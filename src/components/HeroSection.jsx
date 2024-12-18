@@ -39,6 +39,7 @@ export default function HeroSection() {
                 href={config.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                
               >
                 <FaLinkedinIn
                   size={25}

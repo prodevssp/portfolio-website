@@ -82,22 +82,22 @@ const ContactSection = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xl font-bold dark:text-slate-50">Address</p>
+                <p className="text-xl font-bold dark:text-slate-50">Github</p>
                 <p className="text-gray-500 dark:text-slate-300">
-                  {config.contact.address}
+                  {config.socials.github}
                 </p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 flex items-center justify-center bg-green-100 dark:bg-green-800 rounded-full transition-colors duration-300">
                 <span className="text-green-500 dark:text-green-300 text-xl">
-                  ✉️
+                  📧
                 </span>
               </div>
               <div>
                 <p className="text-xl font-bold dark:text-slate-50">Email</p>
                 <p className="text-gray-500 dark:text-slate-300">
-                  {config.contact.email}
+                  {config.socials.mail}
                 </p>
               </div>
             </div>
@@ -108,9 +108,9 @@ const ContactSection = () => {
                 </span>
               </div>
               <div>
-                <p className="text-xl font-bold dark:text-slate-50">Phone</p>
+                <p className="text-xl font-bold dark:text-slate-50">LinkedIn</p>
                 <p className="text-gray-500 dark:text-slate-300">
-                  {config.contact.phone}
+                  {config.socials.linkedin}
                 </p>
               </div>
             </div>

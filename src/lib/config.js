@@ -69,43 +69,43 @@ const config = {
       title: "Best AI/ML Product Navigator of the Year",
       description:
         "Recognized for excellence in AI/ML product navigation and implementation",
-      icon: "🏆",
+      image: "/assets/certificate.webp",
     },
     {
       title: "Best CX Professional of the Year",
       description:
         "Awarded for outstanding contributions to customer experience",
-      icon: "🌟",
+      image: "/assets/certificate.webp",
     },
     {
       title: "Gold Award - DevOps Platform",
       description:
         "Gold Award Winner for developing Centralised DevOps Platform",
-      icon: "🥇",
+      image: "/assets/certificate.webp",
     },
     {
       title: "Gold Award - Process Automation",
       description:
         "Gold Award Winner for automating user entitlements simplification, significantly reducing manual efforts and improving overall process efficiency",
-      icon: "⚡",
+      image: "/assets/certificate.webp",
     },
     {
       title: "Gold Award - Stakeholder Management",
       description:
         "Gold Award Winner for demonstrating exceptional stakeholder management skills",
-      icon: "🤝",
+      image: "/assets/certificate.webp",
     },
     {
       title: "Gold Award - Leadership Excellence",
       description:
         "Gold Award Winner for demonstrating outstanding leadership capabilities",
-      icon: "👑",
+      image: "/assets/certificate.webp",
     },
     {
       title: "Executive Recognition",
       description:
         "Pat on the back award from Executive Leader of Bank of America for resolving critical stability issues",
-      icon: "🎯",
+      image: "/assets/certificate.webp",
     },
   ],
   projects: [
@@ -193,8 +193,6 @@ const config = {
     about:
       "Please fill out the form in this section to contact me. Or call between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday.",
     address: "20, Somewhere in the World",
-    email: "hey@ayushchugh.com",
-    phone: "+123 456 7890",
   },
   servicesHeading: {
     description: "What I Do for Clients",
@@ -202,32 +200,32 @@ const config = {
   },
   services: [
     {
-      title: "Creative Design",
-      price: "$99",
+      title: "Project-based Mentoring Session",
+      // price: "$99",
       description:
-        "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-      icon: "/assets/avatar.png",
+        " Get step-by-step guidance on your project, from planning and execution to problem-solving and optimization, tailored to your unique goals.",
+      icon: "📝",
     },
     {
-      title: "Graphic Design",
-      price: "$199",
+      title: "Quick 1:1 Video Call",
+      // price: "$199",
       description:
-        "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-      icon: "/assets/avatar.png",
+        "Have a short, focused chat to clear roadblocks, get instant feedback, or solidify your understanding of a concept, just when you need it.",
+      icon: "💻",
     },
     {
-      title: "UI/UX Design",
-      price: "$299",
+      title: "Interview-based Mentoring",
+      // price: "$299",
       description:
-        "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-      icon: "/assets/avatar.png",
+        "Practice mock interviews, refine your responses, and learn what top companies look for to boost your confidence and chances of success.",
+      icon: "💼",
     },
     {
-      title: "Web Design",
-      price: "$399",
+      title: "Hands-on Project Execution",
+      // price: "$399",
       description:
-        "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-      icon: "/assets/avatar.png",
+        "Bring in extra support to accelerate your project’s progress, resolve complex issues, and ensure a high-quality, on-time delivery.",
+      icon: "👨🏻‍💻",
     },
   ],
   testimonialsHeading: {
