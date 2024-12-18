@@ -6,8 +6,6 @@ import { auth } from "@/firebase";
 import AuthModal from "./AuthModal";
 import config from "@/lib/config";
 
-
-
 const ServicesSection = () => {
   const [user, setUser] = useState(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -42,23 +40,32 @@ const ServicesSection = () => {
           {config.services.map((service, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-[#4b4f5c] rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white dark:bg-[#4b4f5c] rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center">
+                {/* <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center">
                   <img
                     src={service.icon}
                     alt={service.title}
                     className="h-full w-full object-contain rounded-full"
                   />
-                </div>
+                </div> */}
+                <span
+                  className="text-4xl mb-4"
+                  role="img"
+                  aria-label="achievement icon"
+                >
+                  {service.icon}
+                </span>
                 <div>
                   <h4 className="text-lg md:text-xl font-bold text-slate-900 dark:text-slate-50">
                     {service.title}
                   </h4>
-                  <p className="text-orange-500 font-medium">
-                    Starts from {service.price}
-                  </p>
+                  {service.price && (
+                    <p className="text-orange-500 font-medium">
+                      Starts from {service.price}
+                    </p>
+                  )}
                 </div>
               </div>
               <p className="text-gray-500 dark:text-slate-200 mt-4 text-sm">
