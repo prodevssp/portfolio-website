@@ -8,7 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // Import Next.js router
 
-const AuthModal = ({ isOpen, onClose, onEmailSignIn, mode, switchMode }) => {
+const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
