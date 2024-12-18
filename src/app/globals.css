@@ -65,93 +65,75 @@ body {
   height: 100%;
 }
 
-.prose {
-  pre {
-    @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-700;
-  }
+.prose .anchor {
+  @apply absolute invisible no-underline;
 
-  > blockquote pre {
-  }
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
 
-  > pre {
-    @apply mb-4;
-  }
+.anchor:hover {
+  @apply visible;
+}
 
-  > ol > li pre {
-    @apply my-2;
-  }
+.prose a {
+  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
 
-  pre code {
-    @apply text-neutral-800 dark:text-neutral-100 font-mono text-sm;
-  }
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: "#";
+}
 
-  code {
-    @apply p-[1rem] rounded-lg;
-  }
+.prose *:hover > .anchor {
+  @apply visible;
+}
 
-  pre code {
-    @apply p-[1rem];
-    border: initial;
-    line-height: 1.5;
-  }
+.prose code {
+  @apply px-1.5 py-0.5 rounded-lg text-sm;
+}
 
-  code span {
-    @apply font-medium;
-  }
+.prose pre {
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 p-4 my-6;
+}
 
-  img {
-    @apply m-0;
-  }
+.prose pre code {
+  @apply p-0 text-sm;
+  border: initial;
+  line-height: 1.5;
+  background-color: transparent;
+}
 
-  h2,
-  h3,
-  h4 {
-    @apply font-medium tracking-tighter !important;
-  }
+.prose code span {
+  @apply font-medium;
+}
 
-  strong {
-    @apply font-medium;
-  }
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
 
-  > :first-child {
-    margin-top: 1.25em !important;
-    margin-bottom: 1.25em !important;
-  }
+.prose h2,
+h3,
+h4 {
+  @apply font-medium tracking-tighter !important;
+}
 
-  .anchor {
-    @apply absolute invisible no-underline;
-    margin-left: -1em;
-    padding-right: 0.5em;
-    width: 80%;
-    max-width: 700px;
-    cursor: pointer;
-  }
+.prose strong {
+  @apply font-medium;
+}
 
-  .anchor:hover {
-    @apply visible;
-  }
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
 
-  .anchor:after {
-    @apply text-neutral-300 dark:text-neutral-700;
-    content: "#";
-  }
-
-  *:hover > .anchor {
-    @apply visible;
-  }
-
-  a {
-    @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-  }
-
-  .callout > p {
-    margin: 0 !important;
-  }
-
-  .tweet a {
-    text-decoration: inherit;
-    font-weight: 500;
-  }
+.prose .callout > p {
+  margin: 0 !important;
 }
 
 pre::-webkit-scrollbar {
