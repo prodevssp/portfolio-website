@@ -54,26 +54,31 @@ const CertificationSection = () => {
         <Slider {...settings}>
           {config.certificates.map((certificate, index) => (
             <div key={index} className="px-2 h-full mb-2">
-              <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300">
-                <img
-                  src={certificate.image}
-                  alt={certificate.title}
-                  className="h-56 object-cover w-full"
-                />
-                <div className="p-4">
+              <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300 flex flex-col">
+                {/* Image Section */}
+                <div className="h-56 w-full">
+                  <img
+                    src={certificate.image}
+                    alt={certificate.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+
+                {/* Text Content Section */}
+                <div className="p-4 flex flex-1 flex-col justify-between">
                   <h3 className="text-xl font-bold dark:text-slate-50 text-slate-800">
                     {certificate.title}
                   </h3>
                   <p className="text-gray-400 text-sm mt-2">
                     {certificate.description}
                   </p>
+
+                  {/* Button */}
                   <a
                     href={certificate.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="
-                    mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white
-                    "
+                    className="mt-auto block text-center px-6 py-2.5 border border-orange-500 text-orange font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-300 shadow-md hover:shadow-lg text-orange-500 hover:text-white"
                   >
                     {config.certificationsHeading.viewCertificate}
                   </a>
