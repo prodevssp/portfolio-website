@@ -260,13 +260,13 @@ const config = {
 };
 
 export const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#service", label: "Service" },
-  { href: "#achievements", label: "Achievements" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#portfolio", label: "Portfolio" },
+  { href: "/#service", label: "Service" },
+  { href: "/#achievements", label: "Achievements" },
+  { href: "/#blog", label: "Blog" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export const categories = [

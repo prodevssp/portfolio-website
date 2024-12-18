@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <>
       {/*<CustomCursor />*/}
-      <Navbar />
       <main>
         <HeroSection />
         <AboutMe />

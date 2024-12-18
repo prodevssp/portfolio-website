@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import { ThemeProvider } from "next-themes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "@/components/Navbar";
 
 const JostFont = Jost({
   subsets: ["latin"],
@@ -23,7 +24,11 @@ export default function RootLayout({ children }) {
         className={`${JostFont.className} antialiased from-white via-[#f7f5f7] to-[#e4ddee] bg-gradient-to-br`}
       >
         <ToastContainer position="top-right" />
-        <ThemeProvider attribute={"class"}>{children}</ThemeProvider>
+        <ThemeProvider attribute={"class"}>
+          <Navbar />
+
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
