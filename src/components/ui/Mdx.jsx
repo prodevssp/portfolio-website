@@ -154,18 +154,8 @@ function ConsCard({ title, cons }) {
 }
 
 function Code({ children, ...props }) {
-  const codeHTML = highlight(children);
-
-  return (
-    <div>
-      <pre {...props}>
-        <code
-          dangerouslySetInnerHTML={{ __html: codeHTML }}
-          className="leading-relaxed block"
-        />
-      </pre>
-    </div>
-  );
+  let codeHTML = highlight(children);
+  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
 function slugify(str) {
