@@ -5,21 +5,14 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import config from "../lib/config";
+import config, { categories } from "../lib/config";
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const sliderRef = useRef(null);
 
-  const categories = [
-    "All",
-    "Youtube",
-    "Vimeo",
-    "Soundcloud",
-    "Popup",
-    "Detail",
-  ];
+  
 
   // Filter projects based on active category
   const filteredProjects = useMemo(() => {

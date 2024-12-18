@@ -4,37 +4,9 @@ import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
 import { auth } from "@/firebase";
 import AuthModal from "./AuthModal";
+import config from "@/lib/config";
 
-const services = [
-  {
-    title: "Creative Design",
-    price: "$99",
-    description:
-      "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-    icon: "/assets/avatar.png",
-  },
-  {
-    title: "Graphic Design",
-    price: "$199",
-    description:
-      "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-    icon: "/assets/avatar.png",
-  },
-  {
-    title: "UI/UX Design",
-    price: "$299",
-    description:
-      "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-    icon: "/assets/avatar.png",
-  },
-  {
-    title: "Web Design",
-    price: "$399",
-    description:
-      "Web design refers to the design of websites that are displayed on the internet. It usually refers to the user experience aspects of website development",
-    icon: "/assets/avatar.png",
-  },
-];
+
 
 const ServicesSection = () => {
   const [user, setUser] = useState(null);
@@ -63,11 +35,11 @@ const ServicesSection = () => {
         <div className="max-w-6xl mx-auto text-center px-4">
           <h2 className="text-orange-500 text-4xl font-semibold">Services</h2>
           <h3 className="text-2xl text-gray-400 font-bold mt-2">
-            What I Do for Clients
+            {config.servicesHeading.description}
           </h3>
         </div>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-          {services.map((service, index) => (
+          {config.services.map((service, index) => (
             <div
               key={index}
               className="bg-white dark:bg-[#4b4f5c] rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
@@ -97,7 +69,7 @@ const ServicesSection = () => {
                   href="/consult"
                   className="mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
                 >
-                  Book a Call
+                  {config.servicesHeading.cta}
                 </Link>
               ) : (
                 <button
@@ -107,7 +79,7 @@ const ServicesSection = () => {
                   }}
                   className="mt-6 block w-full text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
                 >
-                  Book a Call
+                  {config.servicesHeading.cta}
                 </button>
               )}
             </div>

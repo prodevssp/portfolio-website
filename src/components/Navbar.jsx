@@ -5,20 +5,13 @@ import { IoMdClose } from "react-icons/io";
 import { FiSun, FiMoon } from "react-icons/fi"; // Import theme toggle icons
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { navLinks } from "@/lib/config";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#portfolio", label: "Portfolio" },
-    { href: "#service", label: "Service" },
-    { href: "#achievements", label: "Achievements" },
-    { href: "#blog", label: "Blog" },
-    { href: "#contact", label: "Contact" },
-  ];
+ 
 
   return (
     <nav className="bg-white dark:bg-gray-800 py-4 md:py-8 px-10 lg:px-20 fixed w-full z-50">

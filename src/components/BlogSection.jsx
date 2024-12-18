@@ -3,34 +3,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import config from "@/lib/config";
 
-// Sample blog data
-const blogs = [
-  {
-    id: 1,
-    category: "Web Development",
-    title: "Jim Morrison Says When the Music's Over Turn Off the Light",
-    date: "23 Dec",
-    image: "/assets/project.png", // Replace with your actual image path
-    link: "#", // Optional: Add a link to the blog post
-  },
-  {
-    id: 2,
-    category: "Branding",
-    title: "How to Be Appreciated for Your Hard Work as a Developer",
-    date: "23 Dec",
-    image: "/assets/project.png",
-    link: "#",
-  },
-  {
-    id: 3,
-    category: "Social Media",
-    title: "How Designers and Developers Can Collaborate Better",
-    date: "23 Dec",
-    image: "/assets/project.png",
-    link: "#",
-  },
-];
 
 const BlogSection = () => {
   const settings = {
@@ -65,15 +39,15 @@ const BlogSection = () => {
   return (
     <section className="py-16 bg-slate-50 dark:bg-[#2C2D33] md:px-10" id="blog">
       <div className="max-w-6xl mx-auto text-center px-4">
-        <h2 className="text-orange-500 text-4xl font-semibold">From My Blog</h2>
+        <h2 className="text-orange-500 text-4xl font-semibold">{config.blogsHeading.title}</h2>
         <h3 className="text-xl font-bold mt-2 text-gray-400">
-          Our Recent Updates, Blog, Tips, Tricks & More
+          {config.blogsHeading.description}
         </h3>
       </div>
 
       <div className="mt-12  max-w-7xl mx-auto">
         <Slider {...settings}>
-          {blogs.map((blog) => (
+          {config.blogs.map((blog) => (
             <div key={blog.id} className="px-2">
               <div className="relative dark:bg-[#4b4f5c] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300">
                 <img
@@ -99,7 +73,7 @@ const BlogSection = () => {
                       rel="noopener noreferrer"
                       className="inline-block mt-4 px-4 py-2 text-sm font-semibold text-orange-500 border border-orange-500 rounded hover:bg-orange-500 hover:text-slate-50 transition"
                     >
-                      Read More
+                      {config.blogsHeading.readMore}
                     </a>
                   )}
                 </div>
