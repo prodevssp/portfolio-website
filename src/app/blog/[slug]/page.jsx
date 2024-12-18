@@ -40,7 +40,7 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <div className="flex flex-col w-full max-w-4xl space-y-8">
+      <div className="flex flex-col w-full max-w-4xl space-y-8 mt-20">
         {/* Header Section */}
         <div className="text-center">
           <h2 className="text-orange-500 text-xl font-semibold mb-4">
