@@ -4,6 +4,7 @@ import { CustomMDX } from "../../../components/ui/Mdx";
 import formatDate from "../../../lib/formatDate";
 import { getBlogPosts } from "../../db/blog";
 import Button from "../../../components/ui/Button";
+import Link from "next/link";
 
 export default function Blog({ params }) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
@@ -74,7 +75,7 @@ export default function Blog({ params }) {
         {/* Navigation Button */}
         <div className="flex justify-center mt-8">
           <Button className="self-center">
-            <a href="/blog">Back to Blog</a>
+            <Link href="/">Back to home</Link>
           </Button>
         </div>
       </div>

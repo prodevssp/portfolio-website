@@ -27,7 +27,7 @@ function formatDate(date) {
     year: "numeric",
   });
 
-  return `${fullDate} (${formattedDate})`;
+  return `${fullDate}`;
 }
 
 export default formatDate;
