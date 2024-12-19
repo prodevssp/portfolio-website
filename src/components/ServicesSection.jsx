@@ -68,7 +68,7 @@ const ServicesSection = () => {
                   )}
                 </div>
               </div>
-              <p className="text-gray-500 dark:text-slate-200 mt-4 text-sm">
+              <p className="text-gray-500 dark:text-slate-200 mt-4 text-sm text-justify">
                 {service.description}
               </p>
               {user ? (
