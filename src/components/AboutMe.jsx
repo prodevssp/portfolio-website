@@ -14,7 +14,7 @@ const AboutMe = () => {
         <div className="relative w-full lg:w-1/2 flex items-center justify-center">
           {/* Background Image */}
           <Image
-            src={"/assets/avatar.svg"}
+            src={config.about.avatar}
             alt="avatar"
             width={400}
             height={400}
@@ -23,11 +23,11 @@ const AboutMe = () => {
 
           {/* Stats */}
           <div className="absolute top-4 left-4 bg-gray-800 bg-opacity-75 px-3 py-2 rounded-lg text-center">
-            <p className="text-2xl font-bold text-green-400">18</p>
+            <p className="text-2xl font-bold text-green-400">10</p>
             <p className="text-xs sm:text-sm">Years of Success</p>
           </div>
           <div className="absolute bottom-4 right-4 bg-gray-800 bg-opacity-75 px-3 py-2 rounded-lg text-center">
-            <p className="text-2xl font-bold text-purple-400">9K</p>
+            <p className="text-2xl font-bold text-purple-400">45</p>
             <p className="text-xs sm:text-sm">Total Projects</p>
           </div>
         </div>
@@ -43,10 +43,10 @@ const AboutMe = () => {
           <p className="text-base sm:text-lg md:text-xl text-slate-800 dark:text-gray-400">
             {config.about.paragraph}
           </p>
-
+          {/* 
           <Button className="self-center lg:self-start">
             <a href="#contact">{config.about.cta}</a>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </section>

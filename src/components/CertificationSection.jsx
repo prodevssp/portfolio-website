@@ -49,23 +49,22 @@ const CertificationSection = () => {
         </p>
       </div>
 
-      
       <div className="mt-12 px-6 max-w-7xl mx-auto">
         <Slider {...settings}>
           {config.certificates.map((certificate, index) => (
             <div key={index} className="px-2 h-full mb-2">
-              <div className="h-full dark:bg-[#4B4F5C] hover:scale-105 bg-slate-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-transform duration-300 flex flex-col">
+              <div className="h-full  hover:scale-105  rounded-lg overflow-hidden hover:shadow-xl transition-transform duration-300 flex flex-col">
                 {/* Image Section */}
-                <div className="h-56 w-full">
+                <div className="h-64 w-full">
                   <img
                     src={certificate.image}
                     alt={certificate.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 </div>
 
                 {/* Text Content Section */}
-                <div className="p-4 flex flex-1 flex-col justify-between">
+                {/* <div className="p-4 flex flex-1 flex-col justify-between">
                   <h3 className="text-xl font-bold dark:text-slate-50 text-slate-800">
                     {certificate.title}
                   </h3>
@@ -73,7 +72,6 @@ const CertificationSection = () => {
                     {certificate.description}
                   </p>
 
-                  {/* Button */}
                   <a
                     href={certificate.link}
                     target="_blank"
@@ -82,7 +80,7 @@ const CertificationSection = () => {
                   >
                     {config.certificationsHeading.viewCertificate}
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
