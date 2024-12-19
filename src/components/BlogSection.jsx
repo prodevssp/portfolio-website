@@ -94,7 +94,7 @@ const BlogSection = () => {
                       alt={blog.metadata.title}
                       className="w-full h-56 object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-green-500 text-slate-50 text-center text-sm px-3 py-1 rounded-md shadow-md">
+                    <div className="absolute top-4 left-4 bg-orange-500 text-slate-50 text-center text-sm px-3 py-1 rounded-md shadow-md">
                       <p>{formatDate(blog.metadata.publishedAt)}</p>
                     </div>
                     <div className="p-6">

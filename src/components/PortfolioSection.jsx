@@ -115,7 +115,7 @@ const PortfolioSection = () => {
                           priority
                         />
                         <div className="p-4">
-                          <h3 className="text-xl text-center font-bold dark:text-slate-50 text-slate-800">
+                          <h3 className="text-xl text-center font-bold  text-orange-500">
                             {project.title}
                           </h3>
                           <p className="text-black dark:text-white text-lg text-justify">
@@ -150,7 +150,7 @@ const PortfolioSection = () => {
                       </div>
 
                       <div className="p-4 flex flex-1 flex-col justify-between">
-                        <h3 className="text-xl text-center font-bold dark:text-slate-50 text-orange-500">
+                        <h3 className="text-xl text-center font-bold  text-orange-500">
                           {project.title}
                         </h3>
                         <p className="text-black dark:text-white text-lg text-justify">

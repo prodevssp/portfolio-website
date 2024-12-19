@@ -27,7 +27,7 @@ const Navbar = () => {
     <nav
       className={`${
         isScrolled ? "bg-white dark:bg-gray-800 shadow-md" : "bg-transparent"
-      } py-4 md:py-8 px-10 lg:px-20 fixed w-full z-50 transition-colors duration-300`}
+      } py-4 px-5 sm:px-10 lg:px-20 fixed w-full z-50 transition-colors duration-300`}
     >
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
@@ -35,17 +35,18 @@ const Navbar = () => {
             <Image
               src="/assets/soumyaSourav_logo.webp"
               alt="logo"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
             />
           </Link>
         </div>
-        <div className="hidden md:flex space-x-6 items-center">
+        {/* Main Navigation */}
+        <div className="hidden lg:flex space-x-6 items-center">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-black dark:text-gray-400 hover:text-orange-500 transition-colors duration-300"
+              className="text-black dark:text-gray-400 hover:text-orange-500 transition-colors duration-300 text-sm md:text-base"
             >
               {link.label}
             </Link>
@@ -62,7 +63,8 @@ const Navbar = () => {
             <Link href={"/#service"}>Free Consultation</Link>
           </Button>
         </div>
-        <div className="md:hidden flex items-center space-x-4">
+        {/* Mobile and Tablet Menu Toggle */}
+        <div className="lg:hidden flex items-center space-x-4">
           {/* Theme Toggle Icon */}
           <button
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
@@ -80,8 +82,9 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-gray-800 py-2">
+        <div className="lg:hidden bg-gray-800 py-2">
           <div className="container mx-auto flex flex-col space-y-2">
             {navLinks.map((link) => (
               <Link
