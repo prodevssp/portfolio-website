@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Button from "./ui/Button";
 import { toast } from "react-toastify";
 import config from "@/lib/config";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -77,41 +79,60 @@ const ContactSection = () => {
           <div className="space-y-8">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 flex items-center justify-center bg-orange-100 dark:bg-orange-800 rounded-full transition-colors duration-300">
-                <span className="text-orange-500 dark:text-orange-300 text-xl">
-                  📍
-                </span>
+                <FaGithub
+                  size={25}
+                  className="dark:fill-white hover:text-gray-700 transition-colors"
+                />
               </div>
               <div>
-                <p className="text-xl font-bold dark:text-slate-50">Github</p>
-                <p className="text-gray-500 dark:text-slate-300">
-                  {config.socials.github}
-                </p>
+                <a
+                  href={config.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p className="text-xl font-bold dark:text-slate-50">Github</p>
+                  <p className="text-gray-500 dark:text-slate-300">
+                    {config.socials.github}
+                  </p>
+                </a>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 flex items-center justify-center bg-green-100 dark:bg-green-800 rounded-full transition-colors duration-300">
-                <span className="text-green-500 dark:text-green-300 text-xl">
-                  📧
-                </span>
+                <IoMdMail
+                  size={25}
+                  className="dark:fill-white hover:text-red-500 transition-colors"
+                />
               </div>
               <div>
-                <p className="text-xl font-bold dark:text-slate-50">Email</p>
-                <p className="text-gray-500 dark:text-slate-300">
-                  {config.socials.mail}
-                </p>
+                <a href={`mailto:${config.socials.mail}`}>
+                  <p className="text-xl font-bold dark:text-slate-50">Email</p>
+                  <p className="text-gray-500 dark:text-slate-300">
+                    {config.socials.mail}
+                  </p>
+                </a>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 flex items-center justify-center bg-purple-100 dark:bg-purple-800 rounded-full transition-colors duration-300">
-                <span className="text-purple-500 dark:text-purple-300 text-xl">
-                  📞
-                </span>
+                <FaLinkedinIn
+                  size={25}
+                  className="dark:fill-white hover:text-blue-500 transition-colors"
+                />
               </div>
               <div>
-                <p className="text-xl font-bold dark:text-slate-50">LinkedIn</p>
-                <p className="text-gray-500 dark:text-slate-300">
-                  {config.socials.linkedin}
-                </p>
+                <a
+                  href={config.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p className="text-xl font-bold dark:text-slate-50">
+                    LinkedIn
+                  </p>
+                  <p className="text-gray-500 dark:text-slate-300">
+                    {config.socials.linkedin}
+                  </p>
+                </a>
               </div>
             </div>
           </div>

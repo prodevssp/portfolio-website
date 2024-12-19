@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { FiSun, FiMoon } from "react-icons/fi"; // Import theme toggle icons
@@ -7,13 +7,28 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import { navLinks } from "@/lib/config";
 import Link from "next/link";
+import Button from "./ui/Button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0); // Change color on any scroll
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-white dark:bg-gray-800 py-4 md:py-8 px-10 lg:px-20 fixed w-full z-50">
+    <nav
+      className={`${
+        isScrolled ? "bg-white dark:bg-gray-800 shadow-md" : "bg-transparent"
+      } py-4 md:py-8 px-10 lg:px-20 fixed w-full z-50 transition-colors duration-300`}
+    >
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="text-white font-bold text-xl">
@@ -43,6 +58,9 @@ const Navbar = () => {
           >
             {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
           </button>
+          <Button>
+            <Link href={"/#service"}>Free Consultation</Link>
+          </Button>
         </div>
         <div className="md:hidden flex items-center space-x-4">
           {/* Theme Toggle Icon */}

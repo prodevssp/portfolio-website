@@ -4,6 +4,7 @@ import Button from "./ui/Button";
 import MouseScrollAnimation from "./ui/MouseScrollAnimation";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -11,7 +12,7 @@ export default function HeroSection() {
       className="min-h-screen flex items-center justify-center bg-no-repeat bg-cover bg-center bg-[url('/assets/backgrounds/hero-bg.jpg')] dark:bg-[url('/assets/backgrounds/hero-bg-dark.jpg')] px-4 md:px-10"
       id="home"
     >
-      <div className="max-w-6xl w-full flex flex-col-reverse lg:flex-row items-center justify-between">
+      <div className="max-w-6xl pt-10 w-full flex flex-col-reverse lg:flex-row items-center justify-between">
         {/* Text Content */}
         <div className="flex flex-col items-center lg:items-start space-y-4 text-center lg:text-left">
           <h2 className="text-xl sm:text-2xl text-orange-500 font-semibold">
@@ -31,15 +32,14 @@ export default function HeroSection() {
             {config.basicDetails.about}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center mt-6">
-            <Button >
-              <a href="#contact">Get Consultation</a>
+            <Button>
+              <Link href="/#service">Get Consultation</Link>
             </Button>
             <div className="flex gap-3 mt-2 sm:mt-0">
               <a
                 href={config.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                
               >
                 <FaLinkedinIn
                   size={25}
@@ -72,11 +72,11 @@ export default function HeroSection() {
         {/* Image */}
         <div className="mb-8 lg:mb-0">
           <Image
-            src={"/assets/avatar.svg"}
+            src={config.basicDetails.avatar}
             alt="avatar"
             width={400}
             height={400}
-            className="w-48 sm:w-64 md:w-80 lg:w-full max-w-sm"
+            className="w-48 sm:w-64 md:w-80 lg:w-full"
           />
         </div>
       </div>

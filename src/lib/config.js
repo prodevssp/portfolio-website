@@ -3,7 +3,8 @@ const config = {
     name: "Soumya Sourav",
     role: "Creative Designer",
     location: "New York",
-    about: `I'm a creative designer based in New York, and I'm very passionate and dedicated to my work.`,
+    about: `I’m a visionary technology leader with over a decade of experience in machine learning, artificial intelligence, and cloud computing.`,
+    avatar: "/assets/avatars/hero.svg",
   },
   socials: {
     linkedin: "https://www.linkedin.com/in/soumyasouravpatnaik/",
@@ -13,8 +14,7 @@ const config = {
   about: {
     heading: `Hey there!`,
     // subHeading: `I Can Design Anything You Want`,
-    paragraph: `I’m a visionary technology leader with over a decade of experience in machine learning,
-    artificial intelligence, and cloud computing. My journey spans the pharmaceutical and
+    paragraph: `My journey spans the pharmaceutical and
     banking domains, where I’ve had the privilege of solving complex challenges with innovative
     AI-driven solutions. Currently, I’m an Assistant Vice President – Specialist, Machine
     Learning &amp; AI Engineer at DBS Bank, leading the way in designing and implementing
@@ -30,6 +30,7 @@ const config = {
     For me, it’s all about combining innovation, collaboration, and a forward-thinking mindset to
     create meaningful change. Let’s connect and explore what’s possible together!`,
     cta: "Get consultation",
+    avatar: "/assets/avatars/about.svg",
   },
   certificationsHeading: {
     title: "Certification",
@@ -41,23 +42,23 @@ const config = {
       title: "AWS Solution Architect",
       //   description:
       // "This certificate is awarded to Jane Doe for outstanding performance and dedication.",
-      image: "/assets/certificate.webp",
-      link: "/path-to-certificate1",
+      image: "/assets/certificates/aws-solutions-architect.png",
+      link: "https://www.credly.com/badges/e80f200b-6322-49e0-a4e4-edbe0808cbc4/public_url",
     },
     {
       title: "AWS Certified Developer",
       //   description:
       // "Awarded to Jane Doe for demonstrating exceptional skills and contribution.",
-      image: "/assets/certificate.webp",
-      link: "/path-to-certificate2",
+      image: "/assets/certificates/aws-developer-associate.png",
+      link: "https://www.credly.com/badges/0688057a-0da1-4f7a-a24c-61c5709b8155/public_url",
     },
     {
       title:
         "Advanced Certification In Software Engineering For Cloud, Blockchain & IoT.",
       //   description:
       // "Advanced Certification In Software Engineering For Cloud, Blockchain & IoT.",
-      image: "/assets/certificate.webp",
-      link: "/path-to-certificate3",
+      image: "/assets/certificates/se-cloud.jpg",
+      link: "https://olympus1.mygreatlearning.com/certificate/TXXLUGNV",
     },
   ],
   achievementsHeading: {
@@ -66,7 +67,7 @@ const config = {
   },
   achievements: [
     {
-      title: "Best AI/ML Product Navigator of the Year",
+      title: "`Best A`I/ML Product Navigator of the Year",
       description:
         "Recognized for excellence in AI/ML product navigation and implementation",
       image: "/assets/certificate.webp",
@@ -190,8 +191,8 @@ const config = {
   contact: {
     title: "Contact Me",
     description: "I Want To Hear From You",
-    about:
-      "Please fill out the form in this section to contact me. Or call between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday.",
+    // about:
+    //   "Please fill out the form in this section to contact me. Or call between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday.",
     address: "20, Somewhere in the World",
   },
   servicesHeading: {
