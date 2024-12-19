@@ -112,7 +112,7 @@ const config = {
   projects: [
     {
       id: 1,
-      category: "Youtube",
+      category: "AI/ML",
       image: "/assets/project.png",
       video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -122,7 +122,7 @@ const config = {
     },
     {
       id: 2,
-      category: "Vimeo",
+      category: "AI/ML",
       image: "/assets/project.png",
       video: "https://player.vimeo.com/video/76979871",
       link: "https://vimeo.com/76979871",
@@ -132,7 +132,7 @@ const config = {
     },
     {
       id: 3,
-      category: "Soundcloud",
+      category: "Software Engineering",
       image: "/assets/project.png",
       link: "https://soundcloud.com/",
       title: "MLflow++",
@@ -141,7 +141,7 @@ const config = {
     },
     {
       id: 4,
-      category: "Popup",
+      category: "AI/ML",
       image: "/assets/project.png",
       title: "Architected a Retrieval-Augmented Generation (RAG)",
       description:
@@ -149,12 +149,85 @@ const config = {
     },
     {
       id: 5,
-      category: "Detail",
+      category: "AI/ML",
       image: "/assets/project.png",
       link: "https://example.com/detail",
       title: "SuperBot",
       description:
         "It’s a product which is versatile conversational agent that can interact with a variety of resources: from technical documentation and code repositories to live websites allowing users to efficiently locate answers, troubleshoot issues, and streamline their workflow. By understanding context and intelligently retrieving the most relevant information, SuperBot makes complex research and problem-solving more accessible than ever.",
+    },
+    {
+      id: 6,
+      category: "AI/ML",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "Resume Parser and deployment on GCP",
+      description:
+        "Automate candidate screening with an AI-driven resume parser that extracts and structures key applicant data at scale. Seamlessly deploy on GCP for robust, flexible, and cost-effective cloud operations.",
+    },
+    {
+      id: 7,
+      category: "AI/ML",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "Loan Default Prediction with Explainable ML Models",
+      description:
+        "Predict risky borrowers and enhance lending decisions through interpretable machine learning models. Gain stakeholder trust with transparent insights into the factors driving default predictions.",
+    },
+    {
+      id: 8,
+      category: "AI/ML",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "AI Video Summarization Project using Mixtral, Whisper, and AWS",
+      description:
+        "Transform long-form video content into concise highlights using cutting-edge AI pipelines. Leverage AWS infrastructure for high-performance processing, rapid scaling, and cost optimization.",
+    },
+    {
+      id: 9,
+      category: "AI/ML",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "MetaData Generation using FAISS and RAGs.",
+      description:
+        "Automatically generate smart tags and descriptions for your content to improve search and discovery. Use advanced tools like FAISS and Retrieval Augmented Generation for quick, accurate results.",
+    },
+    {
+      id: 10,
+      category: "AI/ML",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title:
+        "Drug Discovery using Agentic AI along with Infrastructure Setup on AWS Cloud",
+      description:
+        "Fast-track pharmaceutical research using autonomous AI agents that explore vast chemical spaces to find promising drug candidates. Harness AWS cloud for scalable computations, secure data handling, and efficient model deployments.",
+    },
+    {
+      id: 11,
+      category: "AI/ML",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "Enterprise Level Evaluation System using AI",
+      description:
+        " Develop an AI-based platform to assess employee skills and performance. Gain clear insights into strengths and areas of improvement to guide better management decisions.",
+    },
+    {
+      id: 12,
+      category: "Analytics",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "Taxi Aggregation App and Optimization with Analytics",
+      description:
+        "Combine multiple taxi services into one easy-to-use app. Use data analytics to find the best routes, reduce wait times, and improve the overall ride experience.",
+    },
+    {
+      id: 13,
+      category: "AI/ML",
+      image: "/assets/project.png",
+      link: "https://example.com/detail",
+      title: "Speech Emotion Recognition",
+      description:
+        "Developing a neural network model to accurately classify audio data into distinct emotional categories, such as sad, happy, angry, and neutral.",
     },
   ],
   blogsHeading: {
@@ -270,11 +343,10 @@ export const navLinks = [
 
 export const categories = [
   "All",
-  "Youtube",
-  "Vimeo",
-  "Soundcloud",
-  "Popup",
-  "Detail",
+  "AI/ML",
+  "Software Engineering",
+  "Analytics",
+  "Cloud Engineering",
 ];
 
 export default config;

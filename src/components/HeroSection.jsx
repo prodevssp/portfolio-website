@@ -80,7 +80,9 @@ export default function HeroSection() {
           />
         </div>
       </div>
-      <MouseScrollAnimation />
+      <div className="hidden lg:block">
+        <MouseScrollAnimation />
+      </div>
     </section>
   );
 }

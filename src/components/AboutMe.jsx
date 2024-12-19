@@ -40,7 +40,7 @@ const AboutMe = () => {
           {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-slate-50">
             {config.about.subHeading}
           </h1> */}
-          <p className="text-base sm:text-lg md:text-xl text-slate-800 dark:text-gray-400">
+          <p className="text-base text-justify sm:text-lg md:text-xl text-slate-800 dark:text-gray-400">
             {config.about.paragraph}
           </p>
           {/* 
