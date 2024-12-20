@@ -27,9 +27,9 @@ const Navbar = () => {
     <nav
       className={`${
         isScrolled ? "bg-white dark:bg-gray-800 shadow-md" : "bg-transparent"
-      } py-4 px-5 sm:px-10 lg:px-20 fixed w-full z-50 transition-colors duration-300`}
+      } py-4 px-5 sm:px-10 lg:px-20 xl:px-32 fixed w-full z-50 transition-colors duration-300`}
     >
-      <div className="container flex justify-between items-center">
+      <div className="container max-w-screen-xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="text-white font-bold text-xl">
             <Image
