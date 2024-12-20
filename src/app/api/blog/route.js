@@ -1,6 +1,6 @@
 import { getBlogPosts } from "../../db/blog";
 
-export async function GET(request) {
+export const GET = async (request) => {
   try {
     const blogPosts = getBlogPosts();
     return new Response(JSON.stringify(blogPosts), {
@@ -16,4 +16,4 @@ export async function GET(request) {
       }
     );
   }
-}
+};
