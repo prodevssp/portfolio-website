@@ -13,13 +13,14 @@ export async function POST(request) {
       );
     }
 
-    mailer(
-      `New contact request received: ${subject}`,
-      ` Name: ${name}
+    mailer({
+      subject: `New contact request received: ${subject}`,
+      html: ` Name: ${name}
         Email: ${email}
         Phone: ${phone || "Not provided"}
-        Message: ${message}`
-    );
+        Message: ${message}`,
+      to: process.env.ADMIN_EMAIL,
+    });
 
     return new Response(
       JSON.stringify({ message: "Email sent successfully!" }),

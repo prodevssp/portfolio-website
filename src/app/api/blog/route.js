@@ -3,7 +3,6 @@ import { getBlogPosts } from "../../db/blog";
 export async function GET(request) {
   try {
     const blogPosts = getBlogPosts();
-    console.log(blogPosts);
     return new Response(JSON.stringify(blogPosts), {
       status: 200,
       headers: { "Content-Type": "application/json" },

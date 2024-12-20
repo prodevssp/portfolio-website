@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Button from "./ui/Button";
+import { toast } from "react-toastify";
 
 const DotPattern = () => (
   <svg
@@ -23,10 +24,33 @@ const DotPattern = () => (
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Subscribing email:", email);
+    setLoading(true); // Set loading to true when the API call starts
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Successfully subscribed!");
+      } else {
+        toast.error(data.error ?? "Failed to subscribe. Try again!");
+      }
+    } catch (error) {
+      toast.error("Error occurred. Try again!");
+    }
+
+    setLoading(false); // Set loading to false after the API call ends
     setEmail("");
   };
 
@@ -44,7 +68,7 @@ const NewsletterSection = () => {
               Get My Newsletter
             </h2>
             <p className="text-white text-base md:text-lg opacity-90 mt-2 max-w-lg">
-              Get latest news, updates, tips and trics in your inbox
+              Get latest news, updates, tips and tricks in your inbox
             </p>
           </div>
 
@@ -65,7 +89,13 @@ const NewsletterSection = () => {
                 type="submit"
                 className="w-full sm:w-auto rounded-lg sm:rounded-l-none sm:rounded-r-lg"
               >
-                Send Now
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <span className="loader"></span> Sending...
+                  </div>
+                ) : (
+                  "Send Now"
+                )}
               </Button>
             </div>
           </form>
