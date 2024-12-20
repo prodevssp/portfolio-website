@@ -268,6 +268,11 @@ const config = {
     //   "Please fill out the form in this section to contact me. Or call between 9:00 a.m. and 8:00 p.m. ET, Monday through Friday.",
     address: "20, Somewhere in the World",
   },
+  newsletter: {
+    subTitle: "Subscribe Now",
+    title: "Get My Newsletter",
+    description: "Get latest news, updates, tips and tricks in your inbox",
+  },
   servicesHeading: {
     description: "What I Do for Clients",
     cta: "Book a Call",
@@ -338,6 +343,7 @@ export const navLinks = [
   { href: "/#service", label: "Service" },
   { href: "/#achievements", label: "Achievements" },
   { href: "/#blog", label: "Blog" },
+  { href: "/#newsletter", label: "News Letter" },
   { href: "/#contact", label: "Contact" },
 ];
 
