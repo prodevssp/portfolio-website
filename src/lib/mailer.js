@@ -11,14 +11,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailer = async (subject, message) => {
+const mailer = async ({ subject, html, to }) => {
   try {
     // Define email options
     const mailOptions = {
       from: process.env.SMTP_USER, // Sender details
-      to: process.env.ADMIN_EMAIL, // Admin's email
+      to, // Admin's email
       subject: subject || "Hey there!",
-      html: message,
+      html,
     };
 
     // Send the email
