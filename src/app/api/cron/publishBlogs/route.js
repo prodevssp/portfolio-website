@@ -22,6 +22,7 @@ export const GET = async () => {
           summary: blog.metadata.summary,
           slug: blog.slug,
           publishedAt: blog.metadata.publishedAt,
+          content: JSON.stringify(blog.content),
           notified: false, // Mark as not notified
         });
         console.log(`Pushed blog to DB: ${blog.metadata.title}`);
