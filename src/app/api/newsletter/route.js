@@ -1,34 +1,67 @@
 import { db } from "@/firebase";
 import mailer from "@/lib/mailer";
-import { addDoc, collection, query, where, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
   try {
     const { email } = await request.json();
 
-    // Check if email already exists
+    if (!email) {
+      return NextResponse.json(
+        { error: "Email is required!" },
+        { status: 400 }
+      );
+    }
+
     const subscribersRef = collection(db, "subscribers");
     const q = query(subscribersRef, where("email", "==", email));
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      // Email already exists
+      const existingSubscriber = querySnapshot.docs[0];
+      const subscriberData = existingSubscriber.data();
+
+      if (subscriberData.subscribed) {
+        return NextResponse.json(
+          { error: "Email is already subscribed!" },
+          { status: 400 }
+        );
+      }
+
+      // Re-subscribe an unsubscribed user
+      const subscriberDoc = doc(db, "subscribers", existingSubscriber.id);
+      await updateDoc(subscriberDoc, { subscribed: true });
+
+      await mailer({
+        subject: "Welcome back to Soumya's newsletter!",
+        html: "Thank you for resubscribing to our newsletter. Stay tuned for updates!",
+        to: email,
+      });
+
       return NextResponse.json(
-        { error: "Email already subscribed!" },
-        { status: 400 }
+        { message: "Successfully resubscribed!" },
+        { status: 200 }
       );
     }
 
-    // Add new email to Firestore
+    // Add a new subscriber
     await addDoc(subscribersRef, {
       email,
       subscribedAt: new Date(),
+      subscribed: true, // New field to track subscription status
     });
 
-    // Send welcome email
     await mailer({
-      subject: "Welcome to Soumya's newsletter",
+      subject: "Welcome to Soumya's newsletter!",
       html: "Thank you for subscribing to our newsletter. Stay tuned for updates!",
       to: email,
     });

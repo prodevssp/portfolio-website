@@ -20,20 +20,28 @@ export const GET = async () => {
       return NextResponse.json({ message: "No new blogs to notify." });
     }
 
-    // Fetch all subscribers
+    // Fetch active subscribers
     const subscribersSnapshot = await getDocs(subscribersRef);
-    const subscribers = subscribersSnapshot.docs.map((doc) => doc.data().email);
+    const subscribers = subscribersSnapshot.docs
+      .map((doc) => doc.data())
+      .filter((subscriber) => subscriber.subscribed) // Only send to subscribed users
+      .map((subscriber) => subscriber.email);
+
+    if (subscribers.length === 0) {
+      console.log("No active subscribers.");
+      return NextResponse.json({ message: "No active subscribers." });
+    }
 
     // Send an email for each new blog
     for (const blog of newBlogs) {
       for (const email of subscribers) {
         await mailer({
           subject: `New Blog Published: ${blog.title}`,
-          // html: `<p>${blog.summary}</p><p><a href="${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}">Read more</a></p>`,
           html: generateNewsletterTemplate({
             blogTitle: blog.title,
             blogSummary: blog.summary,
             blogUrl: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}`,
+            email: email,
           }),
           to: email,
         });
@@ -45,11 +53,11 @@ export const GET = async () => {
       console.log(`Notified subscribers about blog: ${blog.title}`);
     }
 
-    return NextResponse.json({ message: "Cron job executed successfully!" });
+    return NextResponse.json({ message: "Newsletters sent successfully!" });
   } catch (error) {
     console.error("Error sending newsletter emails:", error);
     return NextResponse.json(
-      { error: "Cron job execution failed!" },
+      { error: "Newsletter sending failed!" },
       { status: 500 }
     );
   }

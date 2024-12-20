@@ -1,4 +1,5 @@
 export function generateNewsletterTemplate({
+  email,
   blogTitle,
   blogSummary,
   blogUrl,
@@ -98,7 +99,7 @@ export function generateNewsletterTemplate({
         </div>
         <div class="footer">
           <p>You’re receiving this email because you subscribed to our newsletter.</p>
-          <p><a href="#">Unsubscribe</a></p>
+          <p><a href="${process.env.NEXT_PUBLIC_APP_URL}/api/newsletter/${email}/unsubscribe">Unsubscribe</a></p>
         </div>
       </div>
     </body>
