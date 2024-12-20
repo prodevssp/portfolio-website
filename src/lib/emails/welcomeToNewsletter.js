@@ -1,9 +1,4 @@
-export function generateNewsletterTemplate({
-  unsubscribeUrl,
-  blogTitle,
-  blogSummary,
-  blogUrl,
-}) {
+const generateWelcomeToNewsletterTemplate = ({ unsubscribeUrl, appUrl }) => {
   return `
     <!DOCTYPE html>
     <html>
@@ -51,7 +46,7 @@ export function generateNewsletterTemplate({
           padding: 12px 24px;
           color: #ffffff !important;
           background-color: #f97316; /* Tailwind orange-500 hex */
-          border-radius: 8px; /* Rounded corners like your button */
+          border-radius: 8px; /* Rounded corners */
           font-size: 16px;
           font-weight: 600;
           text-align: center;
@@ -88,21 +83,25 @@ export function generateNewsletterTemplate({
     <body>
       <div class="container">
         <div class="header">
-          <h1>New Blog Alert!</h1>
+          <h1>Welcome to Our Newsletter!</h1>
         </div>
         <div class="content">
-          <h2>${blogTitle}</h2>
-          <p>${blogSummary}</p>
+          <h2>Hi there,</h2>
+          <p>Thank you for subscribing to our newsletter! We're excited to have you on board.</p>
+          <p>From now on, you'll receive updates about our latest blogs, tips, and exclusive content right in your inbox.</p>
+          <p>Feel free to explore our website and discover more:</p>
           <p style="text-align: center; margin: 20px 0;">
-            <a href="${blogUrl}" class="button">Read More</a>
+            <a href="${appUrl}" class="button">Visit Our Website</a>
           </p>
         </div>
         <div class="footer">
-          <p>You’re receiving this email because you subscribed to our newsletter.</p>
-          <p><a href="${unsubscribeUrl}">Unsubscribe</a></p>
+          <p>If you didn't subscribe to our newsletter, you can <a href="${unsubscribeUrl}">unsubscribe here</a>.</p>
+          <p>Thank you for being a part of our community!</p>
         </div>
       </div>
     </body>
     </html>
   `;
-}
+};
+
+export default generateWelcomeToNewsletterTemplate;

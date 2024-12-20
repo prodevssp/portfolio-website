@@ -1,4 +1,5 @@
 import { db } from "@/firebase";
+import generateWelcomeToNewsletterTemplate from "@/lib/emails/welcomeToNewsletter";
 import mailer from "@/lib/mailer";
 import {
   addDoc,
@@ -32,8 +33,8 @@ export const POST = async (request) => {
 
       if (subscriberData.subscribed) {
         return NextResponse.json(
-          { error: "Email is already subscribed!" },
-          { status: 400 }
+          { error: "You are already subscribed" },
+          { status: 200 }
         );
       }
 
@@ -43,7 +44,9 @@ export const POST = async (request) => {
 
       await mailer({
         subject: "Welcome back to Soumya's newsletter!",
-        html: "Thank you for resubscribing to our newsletter. Stay tuned for updates!",
+        html: generateWelcomeToNewsletterTemplate({
+          unsubscribeUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/newsletter/${email}/unsubscribe`,
+        }),
         to: email,
       });
 
@@ -59,10 +62,12 @@ export const POST = async (request) => {
       subscribedAt: new Date(),
       subscribed: true, // New field to track subscription status
     });
-
     await mailer({
-      subject: "Welcome to Soumya's newsletter!",
-      html: "Thank you for subscribing to our newsletter. Stay tuned for updates!",
+      subject: "Welcome back to Soumya's newsletter!",
+      html: generateWelcomeToNewsletterTemplate({
+        unsubscribeUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/newsletter/${email}/unsubscribe`,
+        appUrl: process.env.NEXT_PUBLIC_APP_URL,
+      }),
       to: email,
     });
 
