@@ -70,43 +70,43 @@ const config = {
       title: "`Best A`I/ML Product Navigator of the Year",
       description:
         "Recognized for excellence in AI/ML product navigation and implementation",
-      image: "/assets/certificate.webp",
+      image: "/assets/achievements/best-aiml-product-navigator.jpeg",
     },
     {
       title: "Best CX Professional of the Year",
       description:
         "Awarded for outstanding contributions to customer experience",
-      image: "/assets/certificate.webp",
+      image: "/assets/achievements/default.webp",
     },
     {
       title: "Gold Award - DevOps Platform",
       description:
         "Gold Award Winner for developing Centralised DevOps Platform",
-      image: "/assets/certificate.webp",
+      image: "/assets/achievements/default.webp",
     },
     {
       title: "Gold Award - Process Automation",
       description:
         "Gold Award Winner for automating user entitlements simplification, significantly reducing manual efforts and improving overall process efficiency",
-      image: "/assets/certificate.webp",
+      image: "/assets/achievements/default.webp",
     },
     {
       title: "Gold Award - Stakeholder Management",
       description:
         "Gold Award Winner for demonstrating exceptional stakeholder management skills",
-      image: "/assets/certificate.webp",
+      image: "/assets/achievements/default.webp",
     },
     {
       title: "Gold Award - Leadership Excellence",
       description:
         "Gold Award Winner for demonstrating outstanding leadership capabilities",
-      image: "/assets/certificate.webp",
+      image: "/assets/achievements/default.webp",
     },
     {
       title: "Executive Recognition",
       description:
         "Pat on the back award from Executive Leader of Bank of America for resolving critical stability issues",
-      image: "/assets/certificate.webp",
+      image: "/assets/achievements/default.webp",
     },
   ],
   projects: [
