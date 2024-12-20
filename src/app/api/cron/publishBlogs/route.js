@@ -1,6 +1,7 @@
 import { db } from "@/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { getBlogPosts } from "@/app/db/blog";
+import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
@@ -26,7 +27,13 @@ export const GET = async () => {
         console.log(`Pushed blog to DB: ${blog.metadata.title}`);
       }
     }
+
+    return NextResponse.json({ message: "Cron job executed successfully!" });
   } catch (error) {
     console.error("Error publishing new blogs:", error);
+    return NextResponse.json(
+      { error: "Cron job execution failed!" },
+      { status: 500 }
+    );
   }
 };

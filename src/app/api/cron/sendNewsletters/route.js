@@ -1,6 +1,8 @@
 import { db } from "@/firebase";
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import mailer from "@/lib/mailer";
+import { generateNewsletterTemplate } from "@/lib/emails/newsletter";
+import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
@@ -15,7 +17,7 @@ export const GET = async () => {
 
     if (newBlogs.length === 0) {
       console.log("No new blogs to notify.");
-      return;
+      return NextResponse.json({ message: "No new blogs to notify." });
     }
 
     // Fetch all subscribers
@@ -27,7 +29,12 @@ export const GET = async () => {
       for (const email of subscribers) {
         await mailer({
           subject: `New Blog Published: ${blog.title}`,
-          html: `<p>${blog.summary}</p><p><a href="${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}">Read more</a></p>`,
+          // html: `<p>${blog.summary}</p><p><a href="${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}">Read more</a></p>`,
+          html: generateNewsletterTemplate({
+            blogTitle: blog.title,
+            blogSummary: blog.summary,
+            blogUrl: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}`,
+          }),
           to: email,
         });
       }
@@ -37,7 +44,13 @@ export const GET = async () => {
       await updateDoc(blogDoc, { notified: true });
       console.log(`Notified subscribers about blog: ${blog.title}`);
     }
+
+    return NextResponse.json({ message: "Cron job executed successfully!" });
   } catch (error) {
     console.error("Error sending newsletter emails:", error);
+    return NextResponse.json(
+      { error: "Cron job execution failed!" },
+      { status: 500 }
+    );
   }
 };
