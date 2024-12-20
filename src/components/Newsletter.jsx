@@ -35,7 +35,7 @@ const NewsletterSection = () => {
       className="py-8 md:py-16 bg-white dark:bg-[#2C2D33] transition-colors duration-300 px-4 md:px-10 flex justify-center"
       id="newsletter"
     >
-      <div className="relative w-full max-w-6xl bg-violet-500 bg-opacity-90 rounded-xl p-6 sm:p-8 md:p-14 overflow-hidden">
+      <div className="relative w-full max-w-6xl bg-violet-500 bg-opacity-90 rounded-xl p-6 sm:p-8 md:p-16 overflow-hidden">
         <DotPattern />
         <div className="relative z-10 flex flex-col lg:flex-row items-center lg:justify-between gap-8">
           <div className="space-y-1 text-center lg:text-left">
