@@ -41,7 +41,7 @@ export const GET = async () => {
             blogTitle: blog.title,
             blogSummary: blog.summary,
             blogUrl: `${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.slug}`,
-            email: email,
+            unsubscribeUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/newsletter/${email}/unsubscribe`,
           }),
           to: email,
         });
