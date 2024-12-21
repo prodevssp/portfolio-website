@@ -56,11 +56,17 @@ const CertificationSection = () => {
               <div className="h-full  hover:scale-105  rounded-lg overflow-hidden hover:shadow-xl transition-transform duration-300 flex flex-col">
                 {/* Image Section */}
                 <div className="h-64 w-full">
-                  <img
-                    src={certificate.image}
-                    alt={certificate.title}
-                    className="h-full w-full object-contain"
-                  />
+                  <a
+                    href={certificate.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={certificate.image}
+                      alt={certificate.title}
+                      className="h-full w-full object-contain"
+                    />
+                  </a>
                 </div>
 
                 {/* Text Content Section */}
