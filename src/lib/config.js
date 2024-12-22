@@ -347,12 +347,19 @@ export const navLinks = [
   { href: "/#contact", label: "Contact" },
 ];
 
-export const categories = [
+export const projectCategories = [
   "All",
   "AI/ML",
   "Software Engineering",
   "Analytics",
   "Cloud Engineering",
+];
+
+export const blogsCategories = [
+  "Hack and Code",
+  "Tech Updates",
+  "Growth factors",
+  "Carrer Guidance",
 ];
 
 export default config;
