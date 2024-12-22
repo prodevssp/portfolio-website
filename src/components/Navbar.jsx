@@ -31,7 +31,10 @@ const Navbar = () => {
     >
       <div className="container max-w-screen-xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <Link href="/" className="text-white font-bold text-xl">
+          <Link
+            href="/"
+            className="text-white font-bold text-xl cursor-pointer"
+          >
             <Image
               src="/assets/soumyaSourav_logo.webp"
               alt="logo"
