@@ -5,19 +5,46 @@ import formatDate from "../../../lib/formatDate";
 import { getBlogPosts } from "../../db/blog";
 import Button from "../../../components/ui/Button";
 import Link from "next/link";
+import BlogCard from "../../../components/ui/BlogCard";
 
 export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  const allPosts = getBlogPosts();
+  const post = allPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
     notFound();
   }
+
+  const moreLikeThis = allPosts
+    .filter(
+      (p) =>
+        p.metadata.category?.toLowerCase() ===
+          post.metadata.category?.toLowerCase() && p.slug !== post.slug,
+    )
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt),
+    )
+    .slice(0, 3);
+
+  // Helper function to determine grid columns based on number of cards
+  const getGridClassName = (cardCount) => {
+    const baseClasses = "grid gap-8 justify-items-center";
+
+    if (cardCount === 1) {
+      return `${baseClasses} grid-cols-1 max-w-md mx-auto`;
+    } else if (cardCount === 2) {
+      return `${baseClasses} grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto`;
+    }
+    return `${baseClasses} grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`;
+  };
 
   return (
     <section
       className="min-h-screen text-slate-900 dark:text-slate-50 bg-slate-50 dark:bg-[#2C2D33] flex items-center justify-center px-4 py-12 md:px-10"
       id="blog-post"
     >
+      {/* JSON-LD for SEO */}
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -40,7 +67,8 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <div className="flex flex-col w-full max-w-4xl space-y-8 mt-20">
+
+      <div className="flex flex-col w-full max-w-6xl space-y-8 mt-20">
         {/* Header Section */}
         <div className="text-center">
           <h2 className="text-orange-500 text-xl font-semibold mb-4">
@@ -60,8 +88,8 @@ export default function Blog({ params }) {
             <Image
               src={post.metadata.coverImage}
               alt={post.metadata.title}
-              width={1200}
-              height={630}
+              width={800}
+              height={400}
               className="rounded-lg max-w-full"
             />
           </div>
@@ -73,11 +101,25 @@ export default function Blog({ params }) {
         </article>
 
         {/* Navigation Button */}
-        <div className="flex justify-center mt-8">
+        {/* <div className="flex justify-center mt-8">
           <Button className="self-center">
             <Link href="/">Back to home</Link>
           </Button>
-        </div>
+        </div> */}
+
+        {/* "More like this" Section with dynamic grid layout */}
+        {moreLikeThis.length > 0 && (
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold mb-6 text-center text-orange-500">
+              More Like This
+            </h3>
+            <div className={getGridClassName(moreLikeThis.length)}>
+              {moreLikeThis.map((item) => (
+                <BlogCard key={item.slug} blog={item} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
