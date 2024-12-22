@@ -5,7 +5,7 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import config, { categories } from "../lib/config";
+import config, { projectCategories } from "../lib/config";
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -19,7 +19,7 @@ const PortfolioSection = () => {
     return config.projects.filter(
       (project) =>
         project.category.trim().toLowerCase() ===
-        activeFilter.trim().toLowerCase()
+        activeFilter.trim().toLowerCase(),
     );
   }, [activeFilter, config.projects]);
 
@@ -82,7 +82,7 @@ const PortfolioSection = () => {
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center space-x-4 mt-8">
-          {categories.map((category, index) => (
+          {projectCategories.map((category, index) => (
             <button
               key={index}
               onClick={() => setActiveFilter(category)}
