@@ -76,6 +76,11 @@ const BlogSection = () => {
         },
       },
     ],
+    appendDots: (dots) => (
+      <div className="mt-8">
+        <ul className="flex justify-center space-x-2">{dots}</ul>
+      </div>
+    ),
   };
 
   // If the data or settings change, reset slider to the first slide
