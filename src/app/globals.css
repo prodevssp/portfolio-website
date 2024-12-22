@@ -4,6 +4,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* ---------------------------------------------------
+   GLOBAL DEFAULTS
+   --------------------------------------------------- */
 html {
   scroll-behavior: smooth;
   min-width: 360px;
@@ -18,9 +21,12 @@ body {
   color: #fefefe;
 }
 
+/* ---------------------------------------------------
+   LIGHT THEME VARIABLES (DEFAULT)
+   --------------------------------------------------- */
 :root {
   --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
+  --sh-identifier: #354150; /* Ensures code is visible in light mode */
   --sh-sign: #8996a3;
   --sh-string: #007f7a;
   --sh-keyword: #e02518;
@@ -28,131 +34,132 @@ body {
   --sh-jsxliterals: #6266d1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  .slick-dots > ul > li > button:before {
-    color: white;
-  }
+/* ---------------------------------------------------
+   DARK THEME OVERRIDES (when .dark is present)
+   --------------------------------------------------- */
+.dark {
+  --sh-class: #4c97f8;
+  --sh-identifier: #ffffff;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
+  --sh-sign: #cfcfcf;
+  --sh-comment: #aaaaaa;
+  --sh-jsxliterals: #c982ee;
+
+  /* Slick Carousel dots in dark mode */
+  /* If you'd like to invert or adjust colors, do it here */
+  /* e.g., .dark .slick-dots > ul > li > button:before { color: white; } */
 }
 
-.slick-dots {
-  bottom: -50px !important;
+/* If you need to specifically target slick dots in dark mode: */
+.dark .slick-dots > ul > li > button:before {
+  color: white;
 }
 
-.slick-dots > ul > li > button:before {
-  font-size: 14px;
-}
-
-.slick-active > button:before {
-  color: #f87315 !important;
-}
-
-.slick-track {
-  display: flex !important;
-}
-
-.slick-slide {
-  height: inherit !important;
-  margin-bottom: 1rem;
-}
-
-.slick-slide > div {
-  height: 100%;
-}
-
-.prose .anchor {
-  @apply absolute invisible no-underline;
-
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
-  cursor: pointer;
-}
-
-.anchor:hover {
-  @apply visible;
-}
-
-.prose a {
-  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-}
-
-.prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
-  content: "#";
-}
-
-.prose *:hover > .anchor {
-  @apply visible;
-}
-
+/* ---------------------------------------------------
+   CODE / PROSE SETTINGS
+   --------------------------------------------------- */
+.prose pre code,
 .prose code {
-  @apply px-1.5 py-0.5 rounded-lg text-sm;
+  /* Fallback color if var() isn't recognized */
+  color: var(--sh-identifier, #354150);
 }
 
+/* Code Blocks */
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 p-4 my-6;
-}
+  @apply bg-neutral-50 dark:bg-neutral-900;
+  @apply rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 p-4 my-6;
 
+  -ms-overflow-style: none; /* IE/Edge scrollbar */
+  scrollbar-width: none; /* Firefox scrollbar */
+}
 .prose pre code {
   @apply p-0 text-sm;
   border: initial;
   line-height: 1.5;
   background-color: transparent;
 }
-
+pre::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, Opera */
+}
+.prose code {
+  @apply px-1.5 py-0.5 rounded-lg text-sm;
+}
 .prose code span {
   @apply font-medium;
 }
 
+/* ---------------------------------------------------
+   SLICK CAROUSEL ADJUSTMENTS
+   --------------------------------------------------- */
+.slick-dots {
+  bottom: -50px !important;
+}
+.slick-dots > ul > li > button:before {
+  font-size: 14px;
+}
+.slick-active > button:before {
+  color: #f87315 !important;
+}
+.slick-track {
+  display: flex !important;
+}
+.slick-slide {
+  height: inherit !important;
+  margin-bottom: 1rem;
+}
+.slick-slide > div {
+  height: 100%;
+}
+
+/* ---------------------------------------------------
+   PROSE (TYPOGRAPHY) ADJUSTMENTS
+   --------------------------------------------------- */
+.prose .anchor {
+  @apply absolute invisible no-underline;
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+.anchor:hover {
+  @apply visible;
+}
+.prose a {
+  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: "#";
+}
+.prose *:hover > .anchor {
+  @apply visible;
+}
+/* Next/Image reset in .prose */
 .prose img {
-  /* Don't apply styles to next/image */
   @apply m-0;
 }
 
+/* Headings */
 .prose h2,
-h3,
-h4 {
+.prose h3,
+.prose h4 {
   @apply font-medium tracking-tighter !important;
 }
-
 .prose strong {
   @apply font-medium;
 }
-
+/* Avoid top margin removal for the first child in .prose */
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
-
 .prose .callout > p {
   margin: 0 !important;
 }
 
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Remove Safari input shadow on mobile */
-input[type="text"],
-input[type="email"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
+/* TABLE overflow fix */
 table {
   display: block;
   max-width: fit-content;
@@ -160,6 +167,7 @@ table {
   white-space: nowrap;
 }
 
+/* Title balancing */
 .title {
   text-wrap: balance;
 }
