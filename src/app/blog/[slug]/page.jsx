@@ -3,9 +3,8 @@ import Image from "next/image";
 import { CustomMDX } from "../../../components/ui/Mdx";
 import formatDate from "../../../lib/formatDate";
 import { getBlogPosts } from "../../db/blog";
-import Button from "../../../components/ui/Button";
-import Link from "next/link";
 import BlogCard from "../../../components/ui/BlogCard";
+import ScrollToTopButton from "@/components/ui/ScrollToTop";
 
 export default function Blog({ params }) {
   const allPosts = getBlogPosts();
@@ -27,7 +26,6 @@ export default function Blog({ params }) {
     )
     .slice(0, 3);
 
-  // Helper function to determine grid columns based on number of cards
   const getGridClassName = (cardCount) => {
     const baseClasses = "grid gap-8 justify-items-center";
 
@@ -44,7 +42,6 @@ export default function Blog({ params }) {
       className="min-h-screen text-slate-900 dark:text-slate-50 bg-slate-50 dark:bg-[#2C2D33] flex items-center justify-center px-4 py-12 md:px-10"
       id="blog-post"
     >
-      {/* JSON-LD for SEO */}
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -100,13 +97,6 @@ export default function Blog({ params }) {
           <CustomMDX source={post.content} />
         </article>
 
-        {/* Navigation Button */}
-        {/* <div className="flex justify-center mt-8">
-          <Button className="self-center">
-            <Link href="/">Back to home</Link>
-          </Button>
-        </div> */}
-
         {/* "More like this" Section with dynamic grid layout */}
         {moreLikeThis.length > 0 && (
           <div className="mt-12">
@@ -120,6 +110,9 @@ export default function Blog({ params }) {
             </div>
           </div>
         )}
+
+        {/* Scroll to Top Button */}
+        <ScrollToTopButton />
       </div>
     </section>
   );
