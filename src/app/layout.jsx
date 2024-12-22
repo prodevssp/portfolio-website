@@ -23,10 +23,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${JostFont.className} antialiased from-white via-[#f7f5f7] to-[#e4ddee] bg-gradient-to-br`}
       >
-        <ToastContainer position="top-right" />
-        <ThemeProvider attribute={"class"}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ToastContainer position="top-right" />
           <Navbar />
-
           {children}
         </ThemeProvider>
       </body>
