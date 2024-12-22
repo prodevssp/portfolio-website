@@ -74,13 +74,15 @@ function CustomLink(props) {
 
 function RoundedImage(props) {
   return (
-    <Image
-      alt={props.alt}
-      className="rounded-lg shadow-lg !my-6"
-      width={props.width || 1200}
-      height={props.height || 630}
-      {...props}
-    />
+    <div className="w-full flex justify-center">
+      <Image
+        alt={props.alt}
+        className="rounded-lg max-w-full !my-6"
+        width={props.width || 800}
+        height={props.height || 400}
+        {...props}
+      />
+    </div>
   );
 }
 
@@ -188,10 +190,10 @@ function createHeading(level) {
           level === 1
             ? "text-3xl"
             : level === 2
-            ? "text-2xl"
-            : level === 3
-            ? "text-xl"
-            : "text-lg"
+              ? "text-2xl"
+              : level === 3
+                ? "text-xl"
+                : "text-lg"
         }`,
       },
       [
@@ -202,7 +204,7 @@ function createHeading(level) {
             "anchor absolute invisible no-underline ml-[-1em] pr-2 cursor-pointer hover:visible",
         }),
       ],
-      children
+      children,
     );
   };
 }
