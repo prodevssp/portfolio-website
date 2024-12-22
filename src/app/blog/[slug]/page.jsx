@@ -6,6 +6,51 @@ import { getBlogPosts } from "../../db/blog";
 import BlogCard from "../../../components/ui/BlogCard";
 import ScrollToTopButton from "@/components/ui/ScrollToTop";
 
+export async function generateMetadata({ params }) {
+  const allPosts = getBlogPosts();
+  const post = allPosts.find((p) => p.slug === params.slug);
+
+  // If post not found, we might want to return generic or 404 metadata
+  if (!post) {
+    return {
+      title: "Post Not Found",
+      description: "This blog post could not be found.",
+    };
+  }
+
+  // Construct metadata from the post
+  const { title, summary, coverImage, ogImage } = post.metadata;
+  const coverOrOg = ogImage || coverImage;
+  const pageUrl = `https://soumyasourav.com/blog/${params.slug}`;
+
+  return {
+    // Basic
+    title: title,
+    description: summary,
+
+    // Open Graph
+    openGraph: {
+      title: title,
+      description: summary,
+      url: pageUrl,
+      images: [
+        {
+          url: coverOrOg,
+          alt: title,
+        },
+      ],
+    },
+
+    // Twitter
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: summary,
+      images: [coverOrOg],
+    },
+  };
+}
+
 export default function Blog({ params }) {
   const allPosts = getBlogPosts();
   const post = allPosts.find((p) => p.slug === params.slug);
@@ -28,7 +73,6 @@ export default function Blog({ params }) {
 
   const getGridClassName = (cardCount) => {
     const baseClasses = "grid gap-8 justify-items-center";
-
     if (cardCount === 1) {
       return `${baseClasses} grid-cols-1 max-w-md mx-auto`;
     } else if (cardCount === 2) {
