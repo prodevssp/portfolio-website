@@ -1,8 +1,7 @@
-// app/api/blog/like/route.js
 import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
-import { buildFrontmatter, parseFrontmatter } from "@/app/db/blog";
+import { parseFrontmatter } from "@/app/db/blog";
 
 export async function POST(request) {
   try {
@@ -26,8 +25,8 @@ export async function POST(request) {
     metadata.likes = newLikes;
 
     // Rebuild
-    const newFrontmatter = buildFrontmatter(metadata);
-    const newFileContent = newFrontmatter + "\n" + content;
+    // const newFrontmatter = buildFrontmatter(metadata);
+    // const newFileContent = newFrontmatter + "\n" + content;
 
     // Write
     fs.writeFileSync(filePath, newFileContent, "utf-8");
