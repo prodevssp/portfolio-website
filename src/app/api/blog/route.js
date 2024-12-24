@@ -48,6 +48,7 @@ export const POST = async (request) => {
       keywords: blog.keywords,
       likes: 0,
       category: blog.category,
+      likedBy: [],
     });
 
     // Respond with a success message

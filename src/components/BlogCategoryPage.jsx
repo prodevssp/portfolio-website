@@ -30,16 +30,13 @@ export default function CategoryClient({ category }) {
   const filteredBlogs = useMemo(() => {
     const lowerCat = category.trim().toLowerCase();
     return blogs.filter(
-      (b) =>
-        b.metadata?.category &&
-        b.metadata.category.trim().toLowerCase() === lowerCat,
+      (b) => b?.category && b.category.trim().toLowerCase() === lowerCat,
     );
   }, [blogs, category]);
 
   const sortedBlogs = useMemo(() => {
     return [...filteredBlogs].sort(
-      (a, b) =>
-        new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt),
+      (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt),
     );
   }, [filteredBlogs]);
 

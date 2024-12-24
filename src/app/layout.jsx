@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/components/Navbar";
 import config from "@/lib/config";
+import FirebaseProvider from "@/components/providers/FirebaseProvider";
 
 const JostFont = Jost({
   subsets: ["latin"],
@@ -21,11 +22,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${JostFont.className} antialiased from-white via-[#f7f5f7] to-[#e4ddee] bg-gradient-to-br`}
-      >
+      <body className={`${JostFont.className} antialiased `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ToastContainer position="top-right" />
+          {/* <FirebaseProvider>{children}</FirebaseProvider> */}
           <Navbar />
           {children}
         </ThemeProvider>

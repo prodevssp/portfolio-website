@@ -22,16 +22,7 @@ export async function GET(request, { params }) {
     const blogData = blogDoc.data();
 
     // Return the blog data
-    return NextResponse.json({
-      slug,
-      title: blogData.title,
-      summary: blogData.summary,
-      publishedAt: blogData.publishedAt,
-      keywords: blogData.keywords,
-      coverImage: blogData.coverImage,
-      status: blogData.status,
-      content: blogData.content,
-    });
+    return NextResponse.json(blogData);
   } catch (error) {
     console.error("Error fetching single blog:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -68,7 +68,6 @@ const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
           // Clear the email from local storage
           window.localStorage.removeItem("emailForSignIn");
           onClose(); // Close the modal
-          router.push("/consult"); // Redirect to /consult page
         })
         .catch((error) => {
           setError(error.message);

@@ -12,10 +12,6 @@ html {
   min-width: 360px;
 }
 
-body {
-  font-family: "Jost", sans-serif;
-}
-
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
@@ -32,6 +28,7 @@ body {
   --sh-keyword: #e02518;
   --sh-comment: #a19595;
   --sh-jsxliterals: #6266d1;
+  --background-color: #fff;
 }
 
 /* ---------------------------------------------------
@@ -45,10 +42,13 @@ body {
   --sh-sign: #cfcfcf;
   --sh-comment: #aaaaaa;
   --sh-jsxliterals: #c982ee;
+  --background-color: "#2C2D33" /* Slick Carousel dots in dark mode */
+    /* If you'd like to invert or adjust colors, do it here */
+    /* e.g., .dark .slick-dots > ul > li > button:before { color: white; } */;
+}
 
-  /* Slick Carousel dots in dark mode */
-  /* If you'd like to invert or adjust colors, do it here */
-  /* e.g., .dark .slick-dots > ul > li > button:before { color: white; } */
+body {
+  font-family: "Jost", sans-serif;
 }
 
 /* If you need to specifically target slick dots in dark mode: */
