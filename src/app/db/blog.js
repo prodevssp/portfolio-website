@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-function parseFrontmatter(fileContent) {
+export function parseFrontmatter(fileContent) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   let match = frontmatterRegex.exec(fileContent);
 

@@ -1,3 +1,4 @@
+"use client";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { components } from "@/components/ui/Mdx";
 

@@ -1,4 +1,8 @@
-import BlogEditor from "@/components/BlogEditor";
+import dynamic from "next/dynamic";
+
+const BlogEditor = dynamic(() => import("@/components/BlogEditor"), {
+  ssr: false,
+});
 
 export default function BlogEditorPage() {
   return (
