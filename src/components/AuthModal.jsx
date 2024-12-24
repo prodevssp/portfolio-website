@@ -42,7 +42,6 @@ const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
     try {
       await signInWithPopup(auth, googleProvider);
       onClose();
-      router.push("/consult");
     } catch (error) {
       setError("Error signing in with Google: " + error.message);
     }

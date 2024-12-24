@@ -10,7 +10,7 @@ export async function POST(request) {
     if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ message: "Please fill in all required fields." }),
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -34,12 +34,12 @@ export async function POST(request) {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
-      to: process.env.ADMIN_EMAIL,
+      to: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
     });
 
     return new Response(
       JSON.stringify({ message: "Contact request submitted successfully!" }),
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error processing contact request:", error);
@@ -47,7 +47,7 @@ export async function POST(request) {
       JSON.stringify({
         message: "Error processing contact request. Please try again later.",
       }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
