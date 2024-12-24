@@ -1,13 +1,12 @@
 "use client";
 
 import formatDate from "@/lib/formatDate";
-
-const { default: Image } = require("next/image");
-const { CustomMDX } = require("./ui/Mdx");
-const { default: ScrollToTopButton } = require("./ui/ScrollToTop");
-const { useEffect } = require("react");
-const { useState } = require("react");
-const { notFound } = require("next/navigation");
+import Image from "next/image";
+import { CustomMDX } from "./ui/Mdx";
+import ScrollToTopButton from "./ui/ScrollToTop";
+import { useEffect, useState } from "react";
+import { notFound } from "next/navigation";
+import LikeButton from "./ui/LikeButton";
 
 async function fetchBlogPost(slug) {
   try {
@@ -68,8 +67,6 @@ export default function BlogPage({ slug }) {
       </section>
     );
   }
-
-  console.log(post);
 
   return (
     <section
@@ -142,6 +139,12 @@ export default function BlogPage({ slug }) {
             </div>
           </div>
         )} */}
+
+        <LikeButton
+          slug={slug}
+          initialLikes={post.likes}
+          likedBy={post.likedBy}
+        />
 
         {/* Scroll to Top Button */}
         <ScrollToTopButton />
