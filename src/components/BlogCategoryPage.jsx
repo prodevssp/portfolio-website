@@ -6,6 +6,7 @@ import BlogCard from "@/components/ui/BlogCard";
 export default function CategoryClient({ category }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Fetch blog data from /api/blog
   useEffect(() => {
@@ -45,6 +46,18 @@ export default function CategoryClient({ category }) {
     );
   }, [filteredBlogs]);
 
+  // Filter blogs based on the search term
+  const searchedBlogs = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return sortedBlogs;
+
+    return sortedBlogs.filter(
+      (blog) =>
+        blog.title.toLowerCase().includes(term) ||
+        blog.keywords.some((keyword) => keyword.toLowerCase().includes(term)),
+    );
+  }, [sortedBlogs, searchTerm]);
+
   return (
     <section
       className="
@@ -72,19 +85,29 @@ export default function CategoryClient({ category }) {
           </p>
         </div>
 
+        <div className="mb-6">
+          <input
+            type="text"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-gray-300"
+            placeholder="Search blogs by title or keywords..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
         {loading && (
           <div className="flex items-center justify-center h-64">
             <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-orange-500"></div>
           </div>
         )}
 
-        {!loading && sortedBlogs.length === 0 ? (
+        {!loading && searchedBlogs.length === 0 ? (
           <p className="text-center text-gray-500">
             No blog posts found in “{category}”
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedBlogs.map((blog) => (
+            {searchedBlogs.map((blog) => (
               <BlogCard key={blog.slug} blog={blog} />
             ))}
           </div>
