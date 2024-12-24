@@ -41,7 +41,7 @@ export const POST = async (request) => {
       summary: blog.summary,
       slug: blog.slug,
       publishedAt: blog.publishedAt,
-      content: JSON.stringify(blog.content),
+      content: blog.content,
       notified: false,
       status: blog.status,
       coverImage: blog.coverImage,
