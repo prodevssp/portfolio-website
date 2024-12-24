@@ -4,14 +4,18 @@ import { useState, Suspense } from "react";
 import Image from "next/image";
 import { CustomMDX } from "@/components/ui/Mdx";
 import { blogsCategories } from "@/lib/config";
+import { toast } from "react-toastify";
+import Button from "./ui/Button";
 
 export default function BlogEditor() {
+  const [isLoading, setIsLoading] = useState(false);
   const [blogPost, setBlogPost] = useState({
     title: "",
     summary: "",
     publishedAt: "",
     category: "",
     status: "draft",
+    keywords: [],
     content: `
 # Welcome to My Blog
 
@@ -35,29 +39,67 @@ Enjoy writing your blog posts!
     setBlogPost((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBlogPost((prev) => ({ ...prev, coverImage: reader.result }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you would typically send the blogPost data to your backend
-    console.log("Submitting blog post:", blogPost);
-  };
-
   const handleKeywordsChange = (e) => {
     const { value } = e.target;
     setBlogPost((prev) => ({
       ...prev,
       keywords: value.split(",").map((keyword) => keyword.trim()),
     }));
+  };
+
+  const generateSlug = (title) => {
+    return title
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Ensure title is provided before submission
+    if (!blogPost.title) {
+      toast.error("Title is required to save the blog post.");
+      return;
+    }
+
+    setIsLoading(true);
+
+    const slug = generateSlug(blogPost.title);
+    const postData = { ...blogPost, slug };
+
+    try {
+      const response = await fetch("/api/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      });
+
+      if (response.ok) {
+        toast.success("Blog post saved successfully!");
+        setBlogPost({
+          title: "",
+          summary: "",
+          publishedAt: "",
+          category: "",
+          status: "draft",
+          content: "",
+          coverImage: "",
+          keywords: [],
+        });
+      } else {
+        const errorData = await response.json();
+        toast.error(`Failed to save blog post: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error("Error saving blog post:", error);
+      toast.error("An unexpected error occurred.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -83,6 +125,7 @@ Enjoy writing your blog posts!
                   value={blogPost.title}
                   onChange={handleInputChange}
                   placeholder="Enter blog title"
+                  required
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                 />
               </div>
@@ -98,6 +141,7 @@ Enjoy writing your blog posts!
                   name="summary"
                   value={blogPost.summary}
                   onChange={handleInputChange}
+                  required
                   placeholder="Enter blog summary"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                   rows="3"
@@ -115,13 +159,14 @@ Enjoy writing your blog posts!
                   name="publishedAt"
                   type="date"
                   value={blogPost.publishedAt}
+                  required
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                 />
               </div>
               <div className="relative">
                 <label
-                  htmlFor="publishedAt"
+                  htmlFor="category"
                   className="block text-sm font-medium mb-1"
                 >
                   Category
@@ -129,6 +174,7 @@ Enjoy writing your blog posts!
                 <select
                   id="category"
                   name="category"
+                  required
                   value={blogPost.category}
                   onChange={handleInputChange}
                   className="w-full px-3 h-12 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 appearance-none"
@@ -171,8 +217,7 @@ Enjoy writing your blog posts!
                   id="coverImage"
                   name="coverImage"
                   type="text"
-                  onChange={handleImageUpload}
-                  accept="image/*"
+                  onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                   placeholder="URL of cover image"
                 />
@@ -189,6 +234,7 @@ Enjoy writing your blog posts!
                   id="keywords"
                   name="keywords"
                   type="text"
+                  required
                   onChange={handleKeywordsChange}
                   placeholder="Enter keywords separated by commas"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
@@ -196,7 +242,7 @@ Enjoy writing your blog posts!
               </div>
               <div className="relative">
                 <label
-                  htmlFor="publishedAt"
+                  htmlFor="status"
                   className="block text-sm font-medium mb-1"
                 >
                   Status
@@ -205,6 +251,7 @@ Enjoy writing your blog posts!
                   id="status"
                   name="status"
                   value={blogPost.status}
+                  required
                   onChange={handleInputChange}
                   className="w-full px-3 h-12 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 appearance-none"
                 >
@@ -248,12 +295,13 @@ Enjoy writing your blog posts!
               />
             </div>
           </div>
-          <button
+          <Button
             type="submit"
-            className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+            className={"w-full"}
+            // className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
           >
-            Save Blog Post
-          </button>
+            {isLoading ? "Saving..." : "Save Blog Post"}
+          </Button>
         </form>
         <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
           <div className="p-6">
