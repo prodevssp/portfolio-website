@@ -43,15 +43,8 @@ const ServicesSection = () => {
               className="bg-white dark:bg-[#4b4f5c] rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
               <div className="flex items-center space-x-4">
-                {/* <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center">
-                  <img
-                    src={service.icon}
-                    alt={service.title}
-                    className="h-full w-full object-contain rounded-full"
-                  />
-                </div> */}
                 <span
-                  className="text-4xl mb-4"
+                  className="text-4xl"
                   role="img"
                   aria-label="achievement icon"
                 >
@@ -68,27 +61,29 @@ const ServicesSection = () => {
                   )}
                 </div>
               </div>
-              <p className="text-gray-500 dark:text-slate-200 mt-4 text-sm text-justify">
+              <p className="text-gray-500 dark:text-slate-200 mt-4 text-sm flex-grow">
                 {service.description}
               </p>
-              {user ? (
-                <Link
-                  href="/consult"
-                  className="mt-6 block text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
-                >
-                  {config.servicesHeading.cta}
-                </Link>
-              ) : (
-                <button
-                  onClick={() => {
-                    setIsAuthModalOpen(true);
-                    setAuthMode("login");
-                  }}
-                  className="mt-6 block w-full text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
-                >
-                  {config.servicesHeading.cta}
-                </button>
-              )}
+              <div className="mt-6">
+                {user ? (
+                  <Link
+                    href="/consult"
+                    className="block text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
+                  >
+                    {config.servicesHeading.cta}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setIsAuthModalOpen(true);
+                      setAuthMode("login");
+                    }}
+                    className="block w-full text-center px-6 py-2.5 border border-orange-500 text-orange-500 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg"
+                  >
+                    {config.servicesHeading.cta}
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>
