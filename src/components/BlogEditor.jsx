@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { CustomMDX } from "@/components/ui/Mdx";
 import { blogsCategories } from "@/lib/config";
 import { toast } from "react-toastify";
 import Button from "./ui/Button";
 
-export default function BlogEditor() {
+export default function BlogEditor({ slug = null }) {
   const [isLoading, setIsLoading] = useState(false);
   const [blogPost, setBlogPost] = useState({
     title: "",
@@ -34,6 +34,31 @@ Enjoy writing your blog posts!
     coverImage: "",
   });
 
+  // Fetch the blog data if editing
+  useEffect(() => {
+    if (slug) {
+      const fetchBlogPost = async () => {
+        try {
+          setIsLoading(true);
+          const response = await fetch(`/api/blog/${slug}`);
+          if (response.ok) {
+            const data = await response.json();
+            setBlogPost(data);
+          } else {
+            toast.error("Failed to load the blog post for editing.");
+          }
+        } catch (error) {
+          console.error("Error fetching blog post:", error);
+          toast.error("An unexpected error occurred while fetching the blog.");
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchBlogPost();
+    }
+  }, [slug]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setBlogPost((prev) => ({ ...prev, [name]: value }));
@@ -58,7 +83,6 @@ Enjoy writing your blog posts!
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Ensure title is provided before submission
     if (!blogPost.title) {
       toast.error("Title is required to save the blog post.");
       return;
@@ -66,12 +90,14 @@ Enjoy writing your blog posts!
 
     setIsLoading(true);
 
-    const slug = generateSlug(blogPost.title);
-    const postData = { ...blogPost, slug };
+    const generatedSlug = generateSlug(blogPost.title);
+    const postData = { ...blogPost, slug: generatedSlug };
 
     try {
-      const response = await fetch("/api/blog", {
-        method: "POST",
+      const url = slug ? `/api/blog/${slug}/edit` : "/api/blog";
+
+      const response = await fetch(url, {
+        method: "post",
         headers: {
           "Content-Type": "application/json",
         },
@@ -79,20 +105,24 @@ Enjoy writing your blog posts!
       });
 
       if (response.ok) {
-        toast.success("Blog post saved successfully!");
-        setBlogPost({
-          title: "",
-          summary: "",
-          publishedAt: "",
-          category: "",
-          status: "draft",
-          content: "",
-          coverImage: "",
-          keywords: [],
-        });
+        toast.success(`Blog post ${slug ? "updated" : "saved"} successfully!`);
+        if (!slug) {
+          setBlogPost({
+            title: "",
+            summary: "",
+            publishedAt: "",
+            category: "",
+            status: "draft",
+            content: "",
+            coverImage: "",
+            keywords: [],
+          });
+        }
       } else {
         const errorData = await response.json();
-        toast.error(`Failed to save blog post: ${errorData.message}`);
+        toast.error(
+          `Failed to ${slug ? "update" : "save"} blog post: ${errorData.message}`,
+        );
       }
     } catch (error) {
       console.error("Error saving blog post:", error);
@@ -106,7 +136,7 @@ Enjoy writing your blog posts!
     <section className="min-h-screen text-slate-900 dark:text-slate-50 bg-slate-50 dark:bg-[#2C2D33] flex items-center justify-center px-4 py-12 md:px-10">
       <div className="flex flex-col w-full max-w-6xl space-y-8 mt-20">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-orange-500 mb-4">
-          Blog Editor
+          {slug ? "Edit Blog" : "Create Blog"}
         </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -188,24 +218,7 @@ Enjoy writing your blog posts!
                     </option>
                   ))}
                 </select>
-                <div className="absolute inset-y-0 right-3 top-6 flex items-center pointer-events-none">
-                  <svg
-                    className="w-5 h-5 text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
               </div>
-
               <div>
                 <label
                   htmlFor="coverImage"
@@ -217,12 +230,12 @@ Enjoy writing your blog posts!
                   id="coverImage"
                   name="coverImage"
                   type="text"
+                  value={blogPost.coverImage}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                   placeholder="URL of cover image"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                 />
               </div>
-
               <div>
                 <label
                   htmlFor="keywords"
@@ -234,7 +247,7 @@ Enjoy writing your blog posts!
                   id="keywords"
                   name="keywords"
                   type="text"
-                  required
+                  value={blogPost.keywords.join(", ")}
                   onChange={handleKeywordsChange}
                   placeholder="Enter keywords separated by commas"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
@@ -256,26 +269,9 @@ Enjoy writing your blog posts!
                   className="w-full px-3 h-12 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 appearance-none"
                 >
                   <option value="draft">Draft</option>
-
-                  <option value="unpublished">Un published</option>
+                  <option value="unpublished">Unpublished</option>
                   <option value="published">Published</option>
                 </select>
-                <div className="absolute inset-y-0 right-3 top-6 flex items-center pointer-events-none">
-                  <svg
-                    className="w-5 h-5 text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
               </div>
             </div>
             <div className="mb-7">
@@ -295,12 +291,14 @@ Enjoy writing your blog posts!
               />
             </div>
           </div>
-          <Button
-            type="submit"
-            className={"w-full"}
-            // className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
-          >
-            {isLoading ? "Saving..." : "Save Blog Post"}
+          <Button type="submit" className="w-full">
+            {isLoading
+              ? slug
+                ? "Updating..."
+                : "Saving..."
+              : slug
+                ? "Update Blog Post"
+                : "Save Blog Post"}
           </Button>
         </form>
         <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">

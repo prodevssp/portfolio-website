@@ -123,7 +123,7 @@ export default function BlogPage({ slug }) {
 
         {/* Article Content */}
         <article className="prose prose-quoteless prose-neutral dark:prose-invert text-base sm:text-lg md:text-xl text-slate-800 dark:text-gray-400 w-full">
-          <CustomMDX source={JSON.parse(post.content)} />
+          <CustomMDX source={post.content} />
         </article>
 
         {/* "More like this" Section with dynamic grid layout */}

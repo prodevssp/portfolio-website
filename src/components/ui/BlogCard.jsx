@@ -4,7 +4,7 @@ import Link from "next/link";
 import formatDate from "@/lib/formatDate";
 import calculateEstimateReadingTime from "@/lib/calculateEstimateReadingTime";
 
-export default function BlogCard({ blog }) {
+export default function BlogCard({ blog, customHref, customCTA }) {
   if (!blog || !blog) return null;
 
   return (
@@ -84,7 +84,7 @@ export default function BlogCard({ blog }) {
         {/* CTA Section (Button) */}
         <div className="mt-4">
           <Link
-            href={`/blog/${blog.slug}`}
+            href={customHref ? customHref : `/blog/${blog.slug}`}
             className="
               inline-block
               w-full
@@ -102,7 +102,7 @@ export default function BlogCard({ blog }) {
               transition
             "
           >
-            Read More
+            {customCTA || "Read More"}
           </Link>
         </div>
       </div>
