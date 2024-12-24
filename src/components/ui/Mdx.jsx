@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { highlight } from "sugar-high";
+import { renderMDX } from "@/lib/mdx-utils";
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -58,7 +58,10 @@ function CustomLink(props) {
       <a
         {...props}
         className="text-orange-500 hover:text-orange-600 transition-colors duration-200"
-      />
+        href={href}
+      >
+        {props.children}
+      </a>
     );
   }
 
@@ -68,7 +71,10 @@ function CustomLink(props) {
       rel="noopener noreferrer"
       {...props}
       className="text-orange-500 hover:text-orange-600 transition-colors duration-200"
-    />
+      href={href}
+    >
+      {props.children}
+    </a>
   );
 }
 
@@ -155,12 +161,24 @@ function ConsCard({ title, cons }) {
   );
 }
 
-function Code({ children, ...props }) {
-  let codeHTML = highlight(children);
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+function Code({ children, className }) {
+  const language = className ? className.replace(/language-/, "") : "";
+  const isInline = typeof children === "string" && !children.includes("\n");
+
+  if (isInline) {
+    return <code className={className}>{children}</code>;
+  }
+
+  const codeString = Array.isArray(children)
+    ? children.join("")
+    : children || "";
+  const highlightedCode = highlight(codeString);
+
+  return <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />;
 }
 
 function slugify(str) {
+  if (str == null) return "";
   return str
     .toString()
     .toLowerCase()
@@ -181,7 +199,8 @@ function Paragraph({ children }) {
 
 function createHeading(level) {
   return ({ children }) => {
-    let slug = slugify(children);
+    const headingText = React.Children.toArray(children).join("");
+    let slug = slugify(headingText);
     return React.createElement(
       `h${level}`,
       {
@@ -209,7 +228,6 @@ function createHeading(level) {
   };
 }
 
-// Custom list components to handle styling
 function UnorderedList({ children }) {
   return (
     <ul className="list-disc pl-8 mb-4 text-slate-800 dark:text-slate-300 space-y-2">
@@ -250,11 +268,8 @@ let components = {
   p: Paragraph,
 };
 
-export function CustomMDX(props) {
-  return (
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
-    />
-  );
+export function CustomMDX({ source }) {
+  return renderMDX(source);
 }
+
+export { components };
