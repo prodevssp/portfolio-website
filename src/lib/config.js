@@ -282,7 +282,7 @@ const config = {
       title: "Project-based Mentoring Session",
       // price: "$99",
       description:
-        " Get step-by-step guidance on your project, from planning and execution to problem-solving and optimization, tailored to your unique goals.",
+        "Get step-by-step guidance on your project, from planning and execution to problem-solving and optimization, tailored to your unique goals.",
       icon: "📝",
     },
     {
