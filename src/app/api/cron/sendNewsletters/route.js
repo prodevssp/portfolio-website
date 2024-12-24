@@ -1,19 +1,13 @@
-import { db } from "@/firebase";
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
-import mailer from "@/lib/mailer";
-import { generateNewsletterTemplate } from "@/lib/emails/newsletter";
-import { NextResponse } from "next/server";
-
 export const GET = async () => {
   try {
     const blogsRef = collection(db, "blogs");
     const subscribersRef = collection(db, "subscribers");
 
-    // Fetch new blogs that haven't been notified
+    // Fetch new blogs that haven't been notified and are published
     const blogsSnapshot = await getDocs(blogsRef);
     const newBlogs = blogsSnapshot.docs
       .map((doc) => ({ id: doc.id, ...doc.data() }))
-      .filter((blog) => !blog.notified);
+      .filter((blog) => blog.status === "published" && !blog.notified); // Filter by published status
 
     if (newBlogs.length === 0) {
       console.log("No new blogs to notify.");
@@ -58,7 +52,7 @@ export const GET = async () => {
     console.error("Error sending newsletter emails:", error);
     return NextResponse.json(
       { error: "Newsletter sending failed!" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

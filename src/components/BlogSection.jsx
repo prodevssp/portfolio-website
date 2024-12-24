@@ -104,7 +104,7 @@ const BlogSection = () => {
       </div>
 
       {/* Example of listing categories at top, if you like: */}
-      <div className="flex flex-wrap justify-center space-x-4 mt-8">
+      {/* <div className="flex flex-wrap justify-center space-x-4 mt-8">
         {blogsCategories.map((category) => (
           <Link
             key={category}
@@ -114,7 +114,7 @@ const BlogSection = () => {
             {category}
           </Link>
         ))}
-      </div>
+      </div> */}
 
       <div className="mt-12 max-w-7xl mx-auto">
         {loading ? (
