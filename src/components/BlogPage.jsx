@@ -7,45 +7,69 @@ import ScrollToTopButton from "./ui/ScrollToTop";
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import LikeButton from "./ui/LikeButton";
+import BlogCard from "./ui/BlogCard";
+import { useMemo } from "react";
 
 async function fetchBlogPost(slug) {
   try {
-    // Fetch the blog post data from the API
     const response = await fetch(`/api/blog/${slug}`);
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch blog post");
-    }
-
-    const data = await response.json();
-
-    // Return the blog post data
-    return data;
+    if (!response.ok) throw new Error("Failed to fetch blog post");
+    return await response.json();
   } catch (err) {
     console.error("Error fetching blog post:", err);
-    return err;
+    return null;
+  }
+}
+
+async function fetchAllBlogs() {
+  try {
+    const response = await fetch(`/api/blog`);
+    if (!response.ok) throw new Error("Failed to fetch all blogs");
+    return await response.json();
+  } catch (err) {
+    console.error("Error fetching all blogs:", err);
+    return [];
   }
 }
 
 export default function BlogPage({ slug }) {
   const [post, setPost] = useState(null);
+  const [allBlogs, setAllBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchBlogPost(slug)
-      .then((data) => setPost(data))
-      .catch(() => notFound())
-      .finally(() => setIsLoading(false));
-  }, []);
+    async function fetchData() {
+      try {
+        const [blogData, blogs] = await Promise.all([
+          fetchBlogPost(slug),
+          fetchAllBlogs(),
+        ]);
+        if (!blogData) {
+          notFound();
+          return;
+        }
+        setPost(blogData);
+        setAllBlogs(blogs);
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, [slug]);
 
-  // const moreLikeThis = allPosts
-  //   .filter(
-  //     (p) =>
-  //       p.category?.toLowerCase() === post.category?.toLowerCase() &&
-  //       p.slug !== post.slug,
-  //   )
-  //   .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-  //   .slice(0, 3);
+  const moreLikeThis = useMemo(() => {
+    if (!post || !post.keywords || !Array.isArray(post.keywords)) return [];
+    const postKeywords = post.keywords.map((kw) => kw.toLowerCase());
+    return allBlogs
+      .filter(
+        (blog) =>
+          blog.slug !== post.slug &&
+          blog.keywords.some((kw) => postKeywords.includes(kw.toLowerCase())),
+      )
+      .slice(0, 3); // Limit to 3 blogs
+  }, [post, allBlogs]);
 
   const getGridClassName = (cardCount) => {
     const baseClasses = "grid gap-8 justify-items-center";
@@ -73,29 +97,7 @@ export default function BlogPage({ slug }) {
       className="min-h-screen text-slate-900 dark:text-slate-50 bg-slate-50 dark:bg-[#2C2D33] flex items-center justify-center px-4 py-12 md:px-10"
       id="blog-post"
     >
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.title,
-            datePublished: post.publishedAt,
-            dateModified: post.publishedAt,
-            description: post.summary,
-            image: post.ogImage ? `${post.ogImage}` : `${post.coverImage}`,
-            url: `https://ayushchugh.com/blog/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: "Soumya Saourav",
-            },
-          }),
-        }}
-      />
-
       <div className="flex flex-col w-full max-w-6xl space-y-8 mt-20">
-        {/* Header Section */}
         <div className="text-center">
           <h2 className="text-orange-500 text-xl font-semibold mb-4">
             Blog Post
@@ -103,12 +105,11 @@ export default function BlogPage({ slug }) {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-50 mb-4">
             {post.title}
           </h1>
-          <div className="flex justify-center items-center text-slate-600 dark:text-slate-400">
-            <p className="text-sm">{formatDate(post.publishedAt)}</p>
-          </div>
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            {formatDate(post.publishedAt)}
+          </p>
         </div>
 
-        {/* Cover Image */}
         {post.coverImage && (
           <div className="w-full flex justify-center">
             <Image
@@ -121,24 +122,9 @@ export default function BlogPage({ slug }) {
           </div>
         )}
 
-        {/* Article Content */}
         <article className="prose prose-quoteless prose-neutral dark:prose-invert text-base sm:text-lg md:text-xl text-slate-800 dark:text-gray-400 w-full">
           <CustomMDX source={post.content} />
         </article>
-
-        {/* "More like this" Section with dynamic grid layout */}
-        {/* {moreLikeThis.length > 0 && (
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold mb-6 text-center text-orange-500">
-              More Like This
-            </h3>
-            <div className={getGridClassName(moreLikeThis.length)}>
-              {moreLikeThis.map((item) => (
-                <BlogCard key={item.slug} blog={item} />
-              ))}
-            </div>
-          </div>
-        )} */}
 
         <LikeButton
           slug={slug}
@@ -146,7 +132,19 @@ export default function BlogPage({ slug }) {
           likedBy={post.likedBy}
         />
 
-        {/* Scroll to Top Button */}
+        {moreLikeThis.length > 0 && (
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold mb-6 text-center text-orange-500">
+              More Like This
+            </h3>
+            <div className={getGridClassName(moreLikeThis.length)}>
+              {moreLikeThis.map((blog) => (
+                <BlogCard key={blog.slug} blog={blog} />
+              ))}
+            </div>
+          </div>
+        )}
+
         <ScrollToTopButton />
       </div>
     </section>
