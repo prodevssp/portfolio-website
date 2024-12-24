@@ -36,7 +36,7 @@ export default function BlogPage({ slug }) {
       .then((data) => setPost(data))
       .catch(() => notFound())
       .finally(() => setIsLoading(false));
-  }, [slug]);
+  }, []);
 
   // const moreLikeThis = allPosts
   //   .filter(

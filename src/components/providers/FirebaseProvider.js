@@ -17,16 +17,16 @@ export default function FirebaseProvider({ children }) {
 
   if (loading) {
     return (
-      <section className="min-h-screen text-slate-900 dark:text-slate-50 bg-slate-50 dark:bg-[#2C2D33] flex items-center justify-center px-4 py-12 md:px-10">
+      <section className="min-h-screen text-slate-900 dark:text-slate-50 dark:bg-[#2C2D33] flex items-center justify-center px-4 py-12 md:px-10">
         <p className="text-2xl font-semibold text-center">Loading...</p>
       </section>
     );
   }
 
   return (
-    <>
+    <div>
       <Navbar />
       {children}
-    </>
+    </div>
   );
 }
