@@ -32,30 +32,24 @@ export default function BlogCard({ blog, customHref, customCTA }) {
           alt={blog.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-4 left-4 bg-orange-500 text-slate-50 text-center text-sm px-3 py-1 rounded-md shadow-md">
-          <p>{formatDate(blog.publishedAt)}</p>
+        <div className="absolute top-4 left-4 flex items-center space-x-2">
+          {/* Date Badge */}
+          <div className="bg-orange-500 text-slate-50 text-center text-sm px-3 py-1 rounded-md shadow-md">
+            <p>{formatDate(blog.publishedAt)}</p>
+          </div>
+          {/* Category Badge */}
+          <Link
+            href={`/blog/category/${encodeURIComponent(blog.category || "General")}`}
+            className="bg-orange-500 text-slate-50 text-center text-sm px-3 py-1 rounded-md shadow-md"
+          >
+            {blog.category || "General"}
+          </Link>
         </div>
       </div>
 
       {/* Card Body */}
       <div className="flex-1 p-4 flex flex-col justify-between">
         <div>
-          {/* Category Tag */}
-          <Link
-            href={`/blog/category/${encodeURIComponent(
-              blog.category || "General",
-            )}`}
-            className="
-              text-orange-500
-              font-semibold
-              underline
-              cursor-pointer
-              block
-            "
-          >
-            {blog.category || "General"}
-          </Link>
-
           {/* Title */}
           <h4
             className="
