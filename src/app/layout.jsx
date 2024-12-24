@@ -22,12 +22,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${JostFont.className} antialiased `}>
+      <body className={`${JostFont.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ToastContainer position="top-right" />
-          {/* <FirebaseProvider>{children}</FirebaseProvider> */}
-          <Navbar />
-          {children}
+          <FirebaseProvider>{children}</FirebaseProvider>
         </ThemeProvider>
       </body>
     </html>
