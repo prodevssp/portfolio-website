@@ -36,7 +36,7 @@ const BlogSection = () => {
     if (!blogs || blogs.length === 0) return [];
     const map = new Map();
     for (const blog of blogs) {
-      const cat = blog.metadata.category?.trim() || "General";
+      const cat = blog.category?.trim() || "General";
       if (!map.has(cat)) {
         map.set(cat, [blog]);
       } else {
@@ -45,10 +45,7 @@ const BlogSection = () => {
     }
     const result = [];
     for (const [cat, posts] of map.entries()) {
-      posts.sort(
-        (a, b) =>
-          new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt),
-      );
+      posts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
       result.push(posts[0]); // most recent
     }
     return result;

@@ -5,7 +5,7 @@ import formatDate from "@/lib/formatDate";
 import calculateEstimateReadingTime from "@/lib/calculateEstimateReadingTime";
 
 export default function BlogCard({ blog }) {
-  if (!blog || !blog.metadata) return null;
+  if (!blog || !blog) return null;
 
   return (
     <div
@@ -28,14 +28,12 @@ export default function BlogCard({ blog }) {
       {/* Image Section */}
       <div className="h-56 w-full relative">
         <img
-          src={
-            blog.metadata.coverImage || "/assets/backgrounds/default-blog.jpg"
-          }
-          alt={blog.metadata.title}
+          src={blog.coverImage || "/assets/backgrounds/default-blog.jpg"}
+          alt={blog.title}
           className="w-full h-full object-cover"
         />
         <div className="absolute top-4 left-4 bg-orange-500 text-slate-50 text-center text-sm px-3 py-1 rounded-md shadow-md">
-          <p>{formatDate(blog.metadata.publishedAt)}</p>
+          <p>{formatDate(blog.publishedAt)}</p>
         </div>
       </div>
 
@@ -45,7 +43,7 @@ export default function BlogCard({ blog }) {
           {/* Category Tag */}
           <Link
             href={`/blog/category/${encodeURIComponent(
-              blog.metadata.category || "General",
+              blog.category || "General",
             )}`}
             className="
               text-orange-500
@@ -55,7 +53,7 @@ export default function BlogCard({ blog }) {
               block
             "
           >
-            {blog.metadata.category || "General"}
+            {blog.category || "General"}
           </Link>
 
           {/* Title */}
@@ -69,12 +67,12 @@ export default function BlogCard({ blog }) {
               line-clamp-2
             "
           >
-            {blog.metadata.title}
+            {blog.title}
           </h4>
 
           {/* Summary */}
           <p className="text-neutral-700 dark:text-neutral-300 mt-2 line-clamp-3">
-            {blog.metadata.summary}
+            {blog.summary}
           </p>
 
           {/* Reading Time */}
