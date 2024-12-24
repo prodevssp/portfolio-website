@@ -16,7 +16,12 @@ export default function CategoryClient({ category }) {
           throw new Error("Failed to fetch blog posts");
         }
         const data = await response.json();
-        setBlogs(data);
+
+        // Filter blogs to include only those with status "published"
+        const publishedBlogs = data.filter(
+          (blog) => blog.status === "published",
+        );
+        setBlogs(publishedBlogs);
       } catch (error) {
         console.error("Error fetching blog data:", error);
       } finally {
