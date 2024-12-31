@@ -309,27 +309,28 @@ const config = {
   testimonials: [
     {
       id: 1,
-      text: "I rarely like to write reviews, but the Marketify team truly deserve a standing ovation for their customer support, customization, and most importantly, friendliness and professionalism. Many thanks once again for everything and hope that I get to deal with you again in the near future.",
-      author: "Mike Anderson",
-      position: "Vivaco Studio",
+      text: "The career coaching sessions were transformative. Soumya helped me gain clarity and confidence, ultimately leading to a promotion I had been striving for.",
+      author: "Juhi Misra",
+      position: "Associate Software Engineer",
       avatar: "/assets/avatar.png",
     },
     {
       id: 2,
-      text: "Excellent service and amazing designs! They went above and beyond to ensure everything was perfect. I am truly impressed with the quality and dedication.",
-      author: "Sarah Johnson",
-      position: "Creative Minds",
+      text: "With Sourav's mentorship, I successfully transitioned into a new industry. His guidance and practical advice was invaluable!",
+      author: "Arun Prasath",
+      position: "Tech Lead",
       avatar: "/assets/avatar.png",
     },
     {
       id: 3,
-      text: "Their attention to detail and commitment to delivering top-notch results make them stand out from the rest. Highly recommended!",
-      author: "Alex Brown",
-      position: "DesignHub",
+      text: "The personalized career strategies provided by Soumya helped me unlock my potential in AI field. I highly recommend their coaching services.",
+      author: "Sanjeet Nayak",
+      position: "Intern@Clevertap",
       avatar: "/assets/avatar.png",
     },
   ],
 };
+
 
 export const navLinks = [
   { href: "/#home", label: "Home" },
