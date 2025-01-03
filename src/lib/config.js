@@ -1,7 +1,7 @@
 const config = {
   basicDetails: {
     name: "Soumya Sourav",
-    role: "Engineering Leader",
+    role: "Full-Stack Engineering Leader",
     location: "Hyderabad, India",
     about: `I’m a visionary technology leader with over a decade of experience building software solutions, empowering them with artificial intelligence capabilities, and scaling them using Cloud Technologies.`,
     avatar: "/assets/avatars/hero.svg",
