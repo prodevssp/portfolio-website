@@ -331,7 +331,6 @@ const config = {
   ],
 };
 
-
 export const navLinks = [
   { href: "/#home", label: "Home" },
   { href: "/#about", label: "About Me" },

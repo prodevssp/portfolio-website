@@ -25,10 +25,15 @@ const DotPattern = () => (
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when the API call starts
+    setShowModal(true);
+  };
+
+  const confirmSubscription = async () => {
+    setLoading(true);
 
     try {
       const response = await fetch("/api/newsletter", {
@@ -48,10 +53,11 @@ const NewsletterSection = () => {
       }
     } catch (error) {
       toast.error("Error occurred. Try again!");
+    } finally {
+      setLoading(false);
+      setEmail("");
+      setShowModal(false);
     }
-
-    setLoading(false); // Set loading to false after the API call ends
-    setEmail("");
   };
 
   return (
@@ -89,18 +95,49 @@ const NewsletterSection = () => {
                 type="submit"
                 className="w-full sm:w-auto rounded-lg sm:rounded-l-none sm:rounded-r-lg"
               >
-                {loading ? (
-                  <div className="flex items-center gap-2">
-                    <span className="loader"></span> Sending...
-                  </div>
-                ) : (
-                  "Send Now"
-                )}
+                Send Now
               </Button>
             </div>
           </form>
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      {showModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              Confirm Subscription
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              Are you sure you want to subscribe with <strong>{email}</strong>?
+            </p>
+            <div className="flex justify-end gap-4">
+              <Button
+                onClick={() => setShowModal(false)}
+                className="border border-orange-500 !text-orange-500 bg-transparent hover:bg-orange-500 hover:!text-slate-50 transition"
+              >
+                Cancel
+              </Button>
+              <Button onClick={confirmSubscription}>
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <span className="loader"></span> Confirming...
+                  </div>
+                ) : (
+                  "Confirm"
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
