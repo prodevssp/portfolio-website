@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation"; // Import Next.js router
 const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [emailSent, setEmailSent] = useState(false);
 
@@ -24,6 +25,11 @@ const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
         url: typeof window !== "undefined" ? window.location.origin : "",
         handleCodeInApp: true,
       };
+
+      // Save name along with email if in signup mode
+      if (mode === "signup") {
+        window.localStorage.setItem("nameForSignUp", name);
+      }
 
       // Send sign-in link to email
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
@@ -55,16 +61,31 @@ const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
     ) {
       // Retrieve the email from local storage
       let email = window.localStorage.getItem("emailForSignIn");
+      let name = window.localStorage.getItem("nameForSignUp");
 
       if (!email) {
         // Prompt user to provide email if not in local storage
         email = window.prompt("Please provide your email for confirmation");
       }
 
+      if (!name) {
+        // Prompt user to provide name if not in local storage
+        name = window.prompt("Please provide your name to complete signup");
+      }
+
       // Complete sign-in
       signInWithEmailLink(auth, email, window.location.href)
-        .then(() => {
-          // Clear the email from local storage
+        .then((result) => {
+          // If we have a name stored (signup flow), update the user profile
+          if (name) {
+            result.user
+              .updateProfile({
+                displayName: name,
+              })
+              .then(() => {
+                window.localStorage.removeItem("nameForSignUp");
+              });
+          }
           window.localStorage.removeItem("emailForSignIn");
           onClose(); // Close the modal
         })
@@ -98,6 +119,22 @@ const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
           </div>
         ) : (
           <form onSubmit={handleEmailSubmit}>
+            {mode === "signup" && (
+              <div className="mb-6">
+                <label htmlFor="name" className="block mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-3 py-2 border rounded-md dark:bg-[#4b4f5c] dark:text-white"
+                  required
+                  placeholder="Enter your name"
+                />
+              </div>
+            )}
             <div className="mb-6">
               <label htmlFor="email" className="block mb-2">
                 Email
