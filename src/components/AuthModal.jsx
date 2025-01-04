@@ -15,29 +15,32 @@ const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
   const [error, setError] = useState("");
   const [emailSent, setEmailSent] = useState(false);
 
+  // Store the current path when the modal opens
+  useEffect(() => {
+    if (isOpen && typeof window !== "undefined") {
+      window.localStorage.setItem("authRedirectPath", window.location.pathname);
+    }
+  }, [isOpen]);
+
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      // Configuration for email link
+      // Include the current path in the redirect URL
+      const redirectPath =
+        window.localStorage.getItem("authRedirectPath") || "/";
       const actionCodeSettings = {
-        url: typeof window !== "undefined" ? window.location.origin : "",
+        url: `${window.location.origin}${redirectPath}`,
         handleCodeInApp: true,
       };
 
-      // Save name along with email if in signup mode
       if (mode === "signup") {
         window.localStorage.setItem("nameForSignUp", name);
       }
 
-      // Send sign-in link to email
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-
-      // Save email to local storage for verification
       window.localStorage.setItem("emailForSignIn", email);
-
-      // Show sent confirmation
       setEmailSent(true);
     } catch (err) {
       setError(err.message);
@@ -47,53 +50,60 @@ const AuthModal = ({ isOpen, onClose, mode, switchMode }) => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      const redirectPath =
+        window.localStorage.getItem("authRedirectPath") || "/";
+      window.localStorage.removeItem("authRedirectPath");
       onClose();
+      router.push(redirectPath);
     } catch (error) {
       setError("Error signing in with Google: " + error.message);
     }
   };
 
   useEffect(() => {
-    // Check for email link sign-in on component mount
     if (
       typeof window !== "undefined" &&
       isSignInWithEmailLink(auth, window.location.href)
     ) {
-      // Retrieve the email from local storage
       let email = window.localStorage.getItem("emailForSignIn");
       let name = window.localStorage.getItem("nameForSignUp");
+      const redirectPath =
+        window.localStorage.getItem("authRedirectPath") || "/";
 
       if (!email) {
-        // Prompt user to provide email if not in local storage
         email = window.prompt("Please provide your email for confirmation");
       }
 
-      if (!name) {
-        // Prompt user to provide name if not in local storage
+      if (!name && window.location.href.includes("mode=signup")) {
         name = window.prompt("Please provide your name to complete signup");
       }
 
-      // Complete sign-in
       signInWithEmailLink(auth, email, window.location.href)
         .then((result) => {
-          // If we have a name stored (signup flow), update the user profile
           if (name) {
-            result.user
+            return result.user
               .updateProfile({
                 displayName: name,
               })
-              .then(() => {
-                window.localStorage.removeItem("nameForSignUp");
-              });
+              .then(() => result);
           }
+          return result;
+        })
+        .then(() => {
+          // Clean up localStorage
           window.localStorage.removeItem("emailForSignIn");
-          onClose(); // Close the modal
+          window.localStorage.removeItem("nameForSignUp");
+          window.localStorage.removeItem("authRedirectPath");
+
+          onClose();
+          // Redirect back to the original path
+          router.push(redirectPath);
         })
         .catch((error) => {
           setError(error.message);
         });
     }
-  }, []);
+  }, [onClose, router]);
 
   if (!isOpen) return null;
 
