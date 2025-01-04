@@ -1,9 +1,9 @@
 const config = {
   basicDetails: {
     name: "Soumya Sourav",
-    role: "Creative Designer",
-    location: "New York",
-    about: `I’m a visionary technology leader with over a decade of experience in machine learning, artificial intelligence, and cloud computing.`,
+    role: "Full-Stack Engineering Leader",
+    location: "Hyderabad, India",
+    about: `I’m a visionary technology leader with over a decade of experience building software solutions, empowering them with artificial intelligence capabilities, and scaling them using Cloud Technologies.`,
     avatar: "/assets/avatars/hero.svg",
   },
   socials: {
@@ -14,24 +14,19 @@ const config = {
   about: {
     heading: `Hey there!`,
     // subHeading: `I Can Design Anything You Want`,
-    paragraph: `My journey spans the pharmaceutical and
-    banking domains, where I’ve had the privilege of solving complex challenges with innovative
-    AI-driven solutions. Currently, I’m an Assistant Vice President – Specialist, Machine
-    Learning &amp; AI Engineer at DBS Bank, leading the way in designing and implementing
-    transformative data and AI solutions that drive success and enhance customer experiences.
-    I thrive on exploring creative ways to leverage AI to tackle real-world problems—whether
-    it’s optimizing operations or delivering personalized, impactful experiences. My technical
-    expertise covers Python and JavaScript development, AWS cloud architecture, ML
-    engineering, ML-Ops, and Generative AI.
-    When I’m not deep in the tech world, I love sharing my passion through speaking, training,
-    and participating in panel discussions at tech conferences on topics like Cloud, Data, and AI.
-    Over the years, I’ve also mentored hundreds of professionals, helping them achieve their
-    goals and embrace growth confidently.
-    For me, it’s all about combining innovation, collaboration, and a forward-thinking mindset to
-    create meaningful change. Let’s connect and explore what’s possible together!`,
+    paragraph: `I was born in a small town called Brahmapur (Berhampur) in Odisha, where I completed my schooling and laid the foundation for my academic journey. Later, I moved to Bhubaneswar, the capital city, to pursue my intermediate studies before enrolling in the Gandhi Institute of Engineering and Technology for my undergraduate degree. After graduating, I began my professional journey with Hexaware in Chennai.
+
+    My career has since spanned the pharmaceutical and banking domains, where I’ve had the privilege of solving complex challenges with innovative AI-driven solutions. Currently, I serve as an Assistant Vice President – Specialist, Machine Learning AI Engineer at DBS Bank, leading efforts in designing and implementing transformative data and AI solutions that drive success and enhance customer experiences.
+
+    I thrive on exploring creative ways to leverage AI to tackle real-world problems—whether it’s optimizing operations or delivering personalized, impactful experiences. My technical expertise includes Python and JavaScript development, AWS cloud architecture, ML engineering, ML-Ops, and Generative AI.
+
+    Beyond the tech world, I enjoy sharing my passion through speaking, training, and participating in panel discussions at tech conferences on topics like Cloud, Data, and AI. Over the years, I’ve also mentored hundreds of professionals, helping them achieve their goals and embrace growth confidently.
+
+    For me, it’s all about combining innovation, collaboration, and a forward-thinking mindset to create meaningful change. Let’s connect and explore what’s possible together!`,
     cta: "Get consultation",
     avatar: "/assets/avatars/about.svg",
   },
+
   certificationsHeading: {
     title: "Certification",
     description: "My Amazing Works",
@@ -314,23 +309,23 @@ const config = {
   testimonials: [
     {
       id: 1,
-      text: "I rarely like to write reviews, but the Marketify team truly deserve a standing ovation for their customer support, customization, and most importantly, friendliness and professionalism. Many thanks once again for everything and hope that I get to deal with you again in the near future.",
-      author: "Mike Anderson",
-      position: "Vivaco Studio",
+      text: "The career coaching sessions were transformative. Soumya helped me gain clarity and confidence, ultimately leading to a promotion I had been striving for.",
+      author: "Juhi Misra",
+      position: "Associate Software Engineer",
       avatar: "/assets/avatar.png",
     },
     {
       id: 2,
-      text: "Excellent service and amazing designs! They went above and beyond to ensure everything was perfect. I am truly impressed with the quality and dedication.",
-      author: "Sarah Johnson",
-      position: "Creative Minds",
+      text: "With Sourav's mentorship, I successfully transitioned into a new industry. His guidance and practical advice was invaluable!",
+      author: "Arun Prasath",
+      position: "Tech Lead",
       avatar: "/assets/avatar.png",
     },
     {
       id: 3,
-      text: "Their attention to detail and commitment to delivering top-notch results make them stand out from the rest. Highly recommended!",
-      author: "Alex Brown",
-      position: "DesignHub",
+      text: "The personalized career strategies provided by Soumya helped me unlock my potential in AI field. I highly recommend their coaching services.",
+      author: "Sanjeet Nayak",
+      position: "Intern@Clevertap",
       avatar: "/assets/avatar.png",
     },
   ],
@@ -338,12 +333,12 @@ const config = {
 
 export const navLinks = [
   { href: "/#home", label: "Home" },
-  { href: "/#about", label: "About" },
-  { href: "/#portfolio", label: "Portfolio" },
-  { href: "/#service", label: "Service" },
+  { href: "/#about", label: "About Me" },
+  // { href: "/#portfolio", label: "Portfolio" },
+  // { href: "/#service", label: "Service" },
   { href: "/#achievements", label: "Achievements" },
   { href: "/#blog", label: "Blog" },
-  { href: "/#newsletter", label: "News Letter" },
+  { href: "/#newsletter", label: "NewsLetter" },
   { href: "/#contact", label: "Contact" },
 ];
 
