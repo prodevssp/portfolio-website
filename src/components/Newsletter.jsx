@@ -47,7 +47,10 @@ const NewsletterSection = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success("Successfully subscribed!");
+        toast.success(
+          "Verification email sent! Please check your inbox to complete subscription.",
+          { autoClose: 5000 }
+        );
       } else {
         toast.error(data.error ?? "Failed to subscribe. Try again!");
       }
